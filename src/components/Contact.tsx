@@ -20,7 +20,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="yhteystiedot" className="section-padding bg-background">
+    <section id="yhteystiedot" className="section-padding bg-primary">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -28,10 +28,10 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 font-heading">
             Ota yhteyttä
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-primary-foreground/70 text-lg">
             Pyydä ilmainen arviokäynti tai tarjouspyyntö. Vastaamme vuorokauden sisään!
           </p>
         </motion.div>
@@ -45,10 +45,10 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6 font-heading">
+              <h3 className="text-2xl font-bold text-primary-foreground mb-6 font-heading">
                 Pintanen Oy
               </h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-primary-foreground/70 mb-8">
                 Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla. 
                 Toiminta-alue: Pirkanmaa ja ympäröivät kunnat.
               </p>
@@ -57,37 +57,37 @@ const Contact = () => {
             <div className="space-y-4">
               <a
                 href="tel:+358401234567"
-                className="flex items-center gap-4 p-4 rounded-xl bg-card hover:bg-muted transition-colors group"
+                className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Phone className="w-5 h-5 text-primary" />
+                <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Phone className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Puhelin</div>
-                  <div className="font-semibold text-foreground">040 123 4567</div>
+                  <div className="text-sm text-primary-foreground/60">Soita meille</div>
+                  <div className="font-bold text-primary-foreground text-xl">040 123 4567</div>
                 </div>
               </a>
 
               <a
                 href="mailto:info@pintanen.fi"
-                className="flex items-center gap-4 p-4 rounded-xl bg-card hover:bg-muted transition-colors group"
+                className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mail className="w-5 h-5 text-primary" />
+                <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Mail className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Sähköposti</div>
-                  <div className="font-semibold text-foreground">info@pintanen.fi</div>
+                  <div className="text-sm text-primary-foreground/60">Sähköposti</div>
+                  <div className="font-bold text-primary-foreground text-lg">info@pintanen.fi</div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-card">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-4 p-5 rounded-xl bg-white/10 border border-white/10">
+                <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Toiminta-alue</div>
-                  <div className="font-semibold text-foreground">Pirkanmaa ja ympäristö</div>
+                  <div className="text-sm text-primary-foreground/60">Toiminta-alue</div>
+                  <div className="font-bold text-primary-foreground text-lg">Pirkanmaa ja ympäristö</div>
                 </div>
               </div>
             </div>
@@ -99,8 +99,8 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="card-elevated">
-              <h3 className="text-xl font-bold text-foreground mb-6 font-heading">
+            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-8 shadow-lg">
+              <h3 className="text-xl font-bold text-card-foreground mb-6 font-heading">
                 Pyydä tarjous
               </h3>
 
@@ -183,7 +183,7 @@ const Contact = () => {
                   className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${
                     isSubmitted
                       ? 'bg-green-500 text-white'
-                      : 'bg-primary text-primary-foreground hover:bg-primary-dark'
+                      : 'bg-accent text-accent-foreground hover:bg-accent/90'
                   }`}
                 >
                   {isSubmitted ? (
