@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, Clock, Award } from 'lucide-react';
-import kattoKuva from '@/assets/katto_1.png';
+import heroVideo from '@/assets/Taustavideo.mp4';
 
 const Hero = () => {
   return (
@@ -10,11 +10,15 @@ const Hero = () => {
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img
-          src={kattoKuva}
-          alt="Tiilikatto"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div 
           className="absolute inset-0"
           style={{ background: 'var(--hero-gradient)' }}
