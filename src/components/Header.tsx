@@ -57,7 +57,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
             {navItems.map((item) => (
               item.dropdown ? (
                 <div 
@@ -118,7 +118,7 @@ const Header = () => {
           {/* CTA Button */}
           <a
             href="tel:+358401234567"
-            className={`hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all duration-300 ${
+            className={`hidden md:flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm lg:text-base ${
               isScrolled || !isHomePage
                 ? 'bg-primary text-primary-foreground hover:bg-primary-dark'
                 : 'bg-accent text-accent-foreground hover:scale-105'
@@ -131,7 +131,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg ${
+            className={`md:hidden p-2 rounded-lg ${
               isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
             }`}
           >
@@ -147,7 +147,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-card border-t border-border"
+            className="md:hidden bg-card border-t border-border"
           >
             <nav className="section-container py-4 flex flex-col gap-2">
               {navItems.map((item) => (
