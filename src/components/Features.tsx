@@ -1,16 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
-
-const serviceAreas = [
-  'Tampere',
-  'Nokia',
-  'Ylöjärvi',
-  'Kangasala',
-  'Lempäälä',
-  'Pirkkala',
-  'Sastamala',
-  'Valkeakoski',
-];
+import { Link } from 'react-router-dom';
 
 const Features = () => {
   return (
@@ -20,19 +10,23 @@ const Features = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-center justify-center gap-4"
+          className="flex flex-col md:flex-row items-center justify-center gap-3"
         >
           <div className="flex items-center gap-2 text-primary-foreground">
             <MapPin className="w-5 h-5 text-accent" />
-            <span className="font-semibold text-sm md:text-base">Palvelualueet:</span>
+            <span className="font-semibold text-sm md:text-base">
+              Palvelualueet: Pirkanmaa –
+            </span>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-2 gap-y-1">
-            {serviceAreas.map((area, index) => (
-              <span key={area} className="text-primary-foreground/80 text-sm md:text-base">
-                {area}{index < serviceAreas.length - 1 && <span className="mx-2 text-accent">•</span>}
-              </span>
-            ))}
+          <div className="text-primary-foreground/90 text-sm md:text-base">
+            Tampere, Sastamala, Hämeenkyrö, Ylöjärvi, Nokia sekä Forssa
           </div>
+          <Link 
+            to="/toiminta-alueet" 
+            className="text-accent hover:text-accent/80 text-sm font-medium underline underline-offset-2 transition-colors"
+          >
+            Kaikki alueet →
+          </Link>
         </motion.div>
       </div>
     </section>

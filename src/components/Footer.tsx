@@ -10,7 +10,7 @@ const Footer = () => {
             <img src={logo} alt="Pintanen Oy" className="h-16 w-auto mb-4 brightness-0 invert" />
             <p className="text-primary-foreground/70 text-sm">
               Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla. 
-              Toiminta-alue: Pirkanmaa ja ympäröivät kunnat.
+              Toiminta-alue: Pirkanmaa ja lähialueet (Forssa)
             </p>
           </div>
 

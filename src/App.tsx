@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import KattopalvelutPinnoitus from "./pages/KattopalvelutPinnoitus";
 import KattopalvelutPuhdistus from "./pages/KattopalvelutPuhdistus";
 import TalonMaalaus from "./pages/TalonMaalaus";
+import ToimintaAlueet from "./pages/ToimintaAlueet";
 import Referenssit from "./pages/Referenssit";
 import Meista from "./pages/Meista";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/kattopalvelut/pinnoitus" element={<KattopalvelutPinnoitus />} />
             <Route path="/kattopalvelut/puhdistus" element={<KattopalvelutPuhdistus />} />
             <Route path="/talon-maalaus" element={<TalonMaalaus />} />
+            <Route path="/toiminta-alueet" element={<ToimintaAlueet />} />
             <Route path="/referenssit" element={<Referenssit />} />
             <Route path="/meista" element={<Meista />} />
           </Route>
