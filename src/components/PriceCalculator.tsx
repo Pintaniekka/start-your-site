@@ -220,7 +220,7 @@ const PriceCalculator = () => {
                       {roofPrice.min.toLocaleString('fi-FI')} - {roofPrice.max.toLocaleString('fi-FI')} €
                     </div>
                     <div className="text-sm opacity-80 mb-4">
-                      Minimihinta 2 850 € | 5 vuoden takuu
+                      5 vuoden takuu
                     </div>
                     <a
                       href="#yhteystiedot"
