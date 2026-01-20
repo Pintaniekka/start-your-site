@@ -37,6 +37,7 @@ const Header = () => {
       ]
     },
     { label: 'Talon maalaus', href: '/talon-maalaus' },
+    { label: 'Toiminta-alueet', href: '/toiminta-alueet' },
     { label: 'Referenssit', href: '/referenssit' },
     { label: 'Mikä ihmeen Pintanen?', href: '/meista' },
   ];
