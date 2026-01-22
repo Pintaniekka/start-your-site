@@ -24,42 +24,36 @@ const Referenssit = () => {
     { key: 'maalaus', label: 'Talon maalaus' },
   ];
 
-  const projects = [
+const projects = [
     { 
       image: katto1, 
       category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus', 
-      location: 'Tampere, Hervanta' 
+      title: 'Tiilikaton pinnoitus' 
     },
     { 
       image: kattoJalkeen, 
       category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus', 
-      location: 'Nokia' 
+      title: 'Tiilikaton pinnoitus' 
     },
     { 
       image: kattoHarmaa, 
       category: 'puhdistus' as const, 
-      title: 'Katon pesu', 
-      location: 'Lempäälä' 
+      title: 'Katon pesu' 
     },
     { 
       image: kattoRuskea, 
       category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus', 
-      location: 'Pirkkala' 
+      title: 'Tiilikaton pinnoitus' 
     },
     { 
       image: kattoPuolet, 
       category: 'pinnoitus' as const, 
-      title: 'Pinnoitus käynnissä', 
-      location: 'Kangasala' 
+      title: 'Pinnoitus käynnissä' 
     },
     { 
       image: kattoEnnen, 
       category: 'puhdistus' as const, 
-      title: 'Ennen puhdistusta', 
-      location: 'Ylöjärvi' 
+      title: 'Ennen puhdistusta' 
     },
   ];
 
@@ -125,7 +119,6 @@ const Referenssit = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <h3 className="text-primary-foreground font-bold">{project.title}</h3>
-                      <p className="text-primary-foreground/80 text-sm">{project.location}</p>
                     </div>
                   </div>
                 </motion.div>
