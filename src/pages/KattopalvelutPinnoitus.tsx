@@ -48,9 +48,45 @@ const KattopalvelutPinnoitus = () => {
     <div>
       <ServicePageHero
         title="Tiilikaton pinnoitus"
-        subtitle="Anna katolle uusi elämä – 5-vaiheinen prosessimme takaa kestävän lopputuloksen"
+        subtitle='"Eikö me sovittu, että se kiiltää?"'
         backgroundImage={kattoImage}
       />
+
+      {/* Seloste-osio */}
+      <section className="section-padding bg-background">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
+              Miksi tiilikaton pinnoitus?
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground">
+              <p>
+                Tiilikaton maalauspinnoitus antaa katolle vedenpitävän suojan ja pidentää sen käyttöikää merkittävästi. 
+                Pinnoitus estää kosteuden imeytymisen tiiliin, mikä vähentää pakkasvaurioita ja rapautumista.
+              </p>
+              <p>
+                Tiilikaton todellista kuntoa ei voi selvittää tähystämällä kaukaa tai nojatuolista arvuuttelemalla. 
+                Siksi teemme aina ilmaisen kuntotarkastuksen paikan päällä ennen tarjouksen antamista. 
+                Katsomme katon kunnon, arvioimme työn laajuuden ja kerromme rehellisesti, onko pinnoitus järkevä vaihtoehto.
+              </p>
+              <p>
+                Suomen olosuhteissa katot ovat kovemmalla rasituksella kuin monessa muussa maassa. 
+                Lämpötilojen vaihtelu, kosteus, lumi ja jää kuluttavat kattoa jatkuvasti. 
+                Säännöllinen huolto on halvempaa kuin katon täydellinen uusiminen.
+              </p>
+              <p className="font-medium text-foreground">
+                Jos tiilikattoa ei huolla ajoissa, voi edessä olla monta kertaa kalliimpi urakka – katon täydellinen uusiminen. 
+                Ota yhteyttä ja sovitaan ilmainen katselmuskäynti!
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Process Steps */}
       <section className="section-padding bg-background">
@@ -157,6 +193,37 @@ const KattopalvelutPinnoitus = () => {
             </p>
           </motion.div>
           <BeforeAfter />
+        </div>
+      </section>
+
+      {/* Mekaaninen puhdistus */}
+      <section className="section-padding bg-secondary">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Tiilikaton mekaaninen puhdistus ja käsittely
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground text-left">
+              <p>
+                Suosittelemme tiilikaton tarkastusta vuosittain. Sammal, jäkälä ja roskat kannattaa 
+                poistaa säännöllisesti, jotta katto pysyy hyvässä kunnossa mahdollisimman pitkään.
+              </p>
+              <p>
+                Mekaaninen puhdistus tehdään painepesurilla, joka poistaa tehokkaasti pinttyneen lian, 
+                sammalen ja jäkälän. Pesun jälkeen levitämme sammaleentorjunta-aineen, joka estää 
+                uuden kasvuston muodostumisen.
+              </p>
+              <p>
+                Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme mahdollisista 
+                korjaustarpeista. Rikkoutuneet tiilet vaihdetaan tarvittaessa uusiin.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
