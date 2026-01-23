@@ -247,19 +247,19 @@ const KattopalvelutPuhdistus = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Harjatiiviste
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Hengittävä harjatiiviste
                 </h3>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Harjatiiviste asennetaan harjatiilien alle estämään lintujen, 
-                    hyönteisten ja roskien pääsyn katon rakenteisiin. Se parantaa 
-                    katon tuuletusta ja pidentää harjatiilien käyttöikää.
+                    Harjatiiviste asennetaan harjatiilten alle estämään kasvuston, roskien ja 
+                    painavan lumen pääsyn kattotiilten alla olevalle aluskatteelle. Se auttaa 
+                    katon tärkeimmän elementin – aluskatteen pysymistä ehjänä ja näin katon vesitiiviinä.
                   </p>
                   <p>
-                    Suosittelemme harjatiivisteen asennusta erityisesti, jos vanhaa 
-                    tiivistettä ei ole tai se on kulunut. Asennus on helppo tehdä 
-                    puhdistustyön yhteydessä.
+                    Suosittelemme harjatiivisteen asennusta erityisesti, jos tiiviste puuttuu 
+                    tai vanha tiiviste on päässyt huonoon kuntoon. Asennus on helppo tehdä 
+                    pinnoitus/puhdistustyön yhteydessä.
                   </p>
                   <p className="font-medium text-foreground">
                     Kysy lisätietoja harjatiivisteen asennuksesta tarjouspyynnön yhteydessä!
