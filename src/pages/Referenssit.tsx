@@ -21,6 +21,8 @@ import seina2Ennen from '@/assets/seina_2_ennen.jpeg';
 import seina2Jalkeen from '@/assets/seina_2_jalkeen.jpeg';
 import seina3Ennen from '@/assets/seina_3_ennen.jpeg';
 import seina3Jalkeen from '@/assets/seina_3_jalkeen.jpeg';
+import katto3Ennen from '@/assets/katto_3_ennen.jpg';
+import katto3Jalkeen from '@/assets/katto_3_jalkeen.jpg';
 
 type Category = 'all' | 'pinnoitus' | 'puhdistus' | 'maalaus';
 
@@ -31,7 +33,6 @@ interface ProjectImage {
 
 interface GroupedProject {
   type: 'group';
-  thumbnail: string;
   title: string;
   category: Category;
   images: ProjectImage[];
@@ -45,6 +46,30 @@ interface SingleProject {
 }
 
 type Project = GroupedProject | SingleProject;
+
+// Komposiittikansikuva: näyttää projektin vaiheet siivuina vierekkäin
+const CompositeThumbnail = ({ images }: { images: ProjectImage[] }) => {
+  return (
+    <div className="relative w-full h-full flex overflow-hidden">
+      {images.map((img, idx) => (
+        <div 
+          key={idx}
+          className="h-full overflow-hidden"
+          style={{ width: `${100 / images.length}%` }}
+        >
+          <img 
+            src={img.src} 
+            alt={img.label}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            style={{ 
+              objectPosition: idx === 0 ? 'left center' : idx === images.length - 1 ? 'right center' : 'center center'
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const Referenssit = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('all');
@@ -62,7 +87,6 @@ const Referenssit = () => {
     // Katto 1 - ryhmä (ennen, pesty, valmis)
     {
       type: 'group',
-      thumbnail: katto1Ennen,
       title: 'Tiilikattoprojekti 1',
       category: 'pinnoitus',
       images: [
@@ -74,7 +98,6 @@ const Referenssit = () => {
     // Katto 2 - ryhmä (ennen, pesty, valmis)
     {
       type: 'group',
-      thumbnail: kattoEnnen,
       title: 'Tiilikattoprojekti 2',
       category: 'pinnoitus',
       images: [
@@ -83,10 +106,19 @@ const Referenssit = () => {
         { src: katto2Valmis, label: 'Pinnoitettuna' },
       ],
     },
+    // Katto 3 - puhdistusprojekti (ennen, jälkeen)
+    {
+      type: 'group',
+      title: 'Tiilikaton puhdistus',
+      category: 'puhdistus',
+      images: [
+        { src: katto3Ennen, label: 'Ennen puhdistusta' },
+        { src: katto3Jalkeen, label: 'Puhdistuksen jälkeen' },
+      ],
+    },
     // Seinä 1 - ryhmä (ennen, jälkeen)
     {
       type: 'group',
-      thumbnail: seina1Ennen,
       title: 'Omakotitalon maalaus',
       category: 'maalaus',
       images: [
@@ -97,7 +129,6 @@ const Referenssit = () => {
     // Seinä 2 - ryhmä (ennen, jälkeen)
     {
       type: 'group',
-      thumbnail: seina2Ennen,
       title: 'Puutalon maalaus',
       category: 'maalaus',
       images: [
@@ -108,7 +139,6 @@ const Referenssit = () => {
     // Seinä 3 - ryhmä (ennen, jälkeen)
     {
       type: 'group',
-      thumbnail: seina3Ennen,
       title: 'Keltaisen talon maalaus',
       category: 'maalaus',
       images: [
@@ -136,7 +166,6 @@ const Referenssit = () => {
   const openSingleLightbox = (image: string, title: string) => {
     setSelectedProject({
       type: 'group',
-      thumbnail: image,
       title,
       category: 'all',
       images: [{ src: image, label: '' }],
@@ -217,11 +246,15 @@ const Referenssit = () => {
                   }
                 >
                   <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
-                    <img 
-                      src={project.type === 'group' ? project.thumbnail : project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    {project.type === 'group' && project.images.length > 1 ? (
+                      <CompositeThumbnail images={project.images} />
+                    ) : (
+                      <img 
+                        src={project.type === 'group' ? project.images[0].src : project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Group indicator */}

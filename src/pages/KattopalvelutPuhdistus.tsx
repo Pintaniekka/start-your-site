@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { Check, Droplets, Shield, Sparkles, Clock } from 'lucide-react';
+import { Check, Droplets, Shield, Sparkles, Clock, Wrench } from 'lucide-react';
 import ServicePageHero from '@/components/ServicePageHero';
 import ServiceCTA from '@/components/ServiceCTA';
 import kattoImage from '@/assets/katto_harmaa.png';
+import harjatiivisteImage from '@/assets/harjatiiviste.jpg';
 
 const KattopalvelutPuhdistus = () => {
   const features = [
@@ -214,6 +215,69 @@ const KattopalvelutPuhdistus = () => {
                 <strong className="text-foreground">Myyntiä varten?</strong> Puhdas katto nostaa kiinteistön 
                 ensivaikutelmaa merkittävästi ja voi lisätä myyntiarvoa.
               </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lisätyöt */}
+      <section className="section-padding bg-muted">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center mb-10">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wrench className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Lisätyöt
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Tarjoamme myös seuraavia lisätöitä puhdistuksen yhteydessä
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Harjatiiviste
+                </h3>
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    Harjatiiviste asennetaan harjatiilien alle estämään lintujen, 
+                    hyönteisten ja roskien pääsyn katon rakenteisiin. Se parantaa 
+                    katon tuuletusta ja pidentää harjatiilien käyttöikää.
+                  </p>
+                  <p>
+                    Suosittelemme harjatiivisteen asennusta erityisesti, jos vanhaa 
+                    tiivistettä ei ole tai se on kulunut. Asennus on helppo tehdä 
+                    puhdistustyön yhteydessä.
+                  </p>
+                  <p className="font-medium text-foreground">
+                    Kysy lisätietoja harjatiivisteen asennuksesta tarjouspyynnön yhteydessä!
+                  </p>
+                </div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <img 
+                  src={harjatiivisteImage} 
+                  alt="Harjatiiviste asennettuna" 
+                  className="rounded-2xl shadow-xl w-full"
+                />
+              </motion.div>
             </div>
           </motion.div>
         </div>
