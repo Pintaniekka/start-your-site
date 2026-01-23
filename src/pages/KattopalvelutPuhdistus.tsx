@@ -31,16 +31,16 @@ const KattopalvelutPuhdistus = () => {
   const benefits = [
     "Pidentää katon käyttöikää",
     "Parantaa talon ulkonäköä",
-    "Estää uuden kasvuston syntymistä",
-    "Estää tiilten halkeamista",
+    "Estää kosteusongelmia",
     "Ennaltaehkäisevä huolto",
     "Edullisempi kuin pinnoitus",
+    "Ilmainen kuntotarkastus mukana",
   ];
 
   const pricing = [
-    { size: "Alle 100 m²", price: "alkaen 350€" },
-    { size: "100-150 m²", price: "alkaen 500€" },
-    { size: "150-200 m²", price: "alkaen 650€" },
+    { size: "Alle 100 m²", price: "alkaen 800€" },
+    { size: "100-150 m²", price: "alkaen 1000€" },
+    { size: "150-200 m²", price: "alkaen 1400€" },
     { size: "Yli 200 m²", price: "Kysy tarjous" },
   ];
 
@@ -76,11 +76,11 @@ const KattopalvelutPuhdistus = () => {
               </p>
               <p>
                 Puhdistuksen jälkeen levitämme sammaleentorjunta-aineen, joka estää uuden kasvuston muodostumisen.
-                Käsittely suojaa kattoa useiksi vuosiksi.
+                Käsittely suojaa kattoa jopa useiksi vuosiksi.
               </p>
               <p>
                 Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme mahdollisista korjaustarpeista.
-                Rikkoutuneet tiilet vaihdetaan tarvittaessa uusiin.
+                Rikkoutuneet tiilet vaihdetaan uusiin.
               </p>
             </div>
           </motion.div>
@@ -189,16 +189,16 @@ const KattopalvelutPuhdistus = () => {
             </h2>
             <div className="text-lg text-muted-foreground space-y-4">
               <p>
-                <strong className="text-foreground">Sammalta tai jäkälää katolla?</strong> Jo pienikin määrä sammalta
-                kannattaa poistaa ennen kuin se leviää koko katolle ja aiheuttaa suurempia vahinkoja.
+                <strong className="text-foreground">Sammalta tai muuta kasvustoa katolla?</strong> Jo pienikin määrä
+                sammalta kannattaa poistaa ennen kuin se aiheuttaa vahinkoa koko katolla.
               </p>
               <p>
-                <strong className="text-foreground">5-10 vuotta edellisestä pesusta?</strong> Säännöllinen puhdistus
+                <strong className="text-foreground">Aikaa edellisestä puhdistuksessta?</strong> Säännöllinen puhdistus
                 pitää katon hyvässä kunnossa ja estää kalliimmat korjaukset tulevaisuudessa.
               </p>
               <p>
                 <strong className="text-foreground">Myyntiä varten?</strong> Puhdas katto nostaa kiinteistön
-                ensivaikutelmaa merkittävästi ja voi lisätä myyntiarvoa.
+                ensivaikutelmaa ja voi lisätä myyntiarvoa.
               </p>
             </div>
           </motion.div>
