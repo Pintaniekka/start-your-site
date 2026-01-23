@@ -1,28 +1,16 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Clock, Award, MapPin } from 'lucide-react';
-import heroVideo from '@/assets/Taustavideo.mp4';
+import { motion } from "framer-motion";
+import { ArrowRight, Shield, Clock, Award, MapPin } from "lucide-react";
+import heroVideo from "@/assets/Taustavideo.mp4";
 
 const Hero = () => {
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-    >
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
+        <video autoPlay loop muted playsInline className="w-full h-full object-cover">
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div 
-          className="absolute inset-0"
-          style={{ background: 'var(--hero-gradient)' }}
-        />
+        <div className="absolute inset-0" style={{ background: "var(--hero-gradient)" }} />
       </div>
 
       {/* Content */}
@@ -38,28 +26,19 @@ const Hero = () => {
             <div className="flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                 <MapPin className="w-4 h-4 text-accent" />
-                <span className="text-white/90 text-sm font-medium">
-                  Pirkanmaan alue
-                </span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <Shield className="w-4 h-4 text-accent" />
-                <span className="text-white/90 text-sm font-medium">
-                  100% Takuutyötä
-                </span>
+                <span className="text-white/90 text-sm font-medium">Pirkanmaan alue</span>
               </div>
             </div>
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-heading">
-              Uutta ilmettä kotisi{' '}
-              <span className="text-accent">katoille ja seinille</span>
+              Uutta ilmettä kotisi <span className="text-accent">katoille ja seinille</span>
             </h1>
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-              Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla Pirkanmaalla. 
-              Pidennä talosi elinikää ja nosta sen arvoa takuutyöllä.
+              Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla Pirkanmaalla. Pidennä talosi elinikää ja
+              nosta sen arvoa takuutyöllä.
             </p>
 
             {/* CTA Buttons */}
