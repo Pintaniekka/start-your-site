@@ -10,8 +10,8 @@ const KattopalvelutPinnoitus = () => {
   const processSteps = [
     {
       icon: Droplets,
-      title: '1. Katon pesu',
-      description: 'Perusteellinen painepesuri sammalen, lian ja jäkälän poistamiseen.',
+      title: '1. Mekaaninen puhdistus',
+      description: 'Huolellinen puhdistus ilman painepesua – säästää tiilen pintaa.',
     },
     {
       icon: Shield,
@@ -196,36 +196,6 @@ const KattopalvelutPinnoitus = () => {
         </div>
       </section>
 
-      {/* Mekaaninen puhdistus */}
-      <section className="section-padding bg-secondary">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Tiilikaton mekaaninen puhdistus ja käsittely
-            </h2>
-            <div className="space-y-6 text-lg text-muted-foreground text-left">
-              <p>
-                Suosittelemme tiilikaton tarkastusta vuosittain. Sammal, jäkälä ja roskat kannattaa 
-                poistaa säännöllisesti, jotta katto pysyy hyvässä kunnossa mahdollisimman pitkään.
-              </p>
-              <p>
-                Mekaaninen puhdistus tehdään painepesurilla, joka poistaa tehokkaasti pinttyneen lian, 
-                sammalen ja jäkälän. Pesun jälkeen levitämme sammaleentorjunta-aineen, joka estää 
-                uuden kasvuston muodostumisen.
-              </p>
-              <p>
-                Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme mahdollisista 
-                korjaustarpeista. Rikkoutuneet tiilet vaihdetaan tarvittaessa uusiin.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Price Calculator */}
       <section id="hintalaskuri" className="section-padding bg-secondary">

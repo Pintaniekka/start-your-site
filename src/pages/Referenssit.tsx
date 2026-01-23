@@ -10,6 +10,15 @@ import kattoPuolet from '@/assets/katto_puolet.png';
 import kattoHarmaa from '@/assets/katto_harmaa.png';
 import kattoRuskea from '@/assets/katto_ruskea.png';
 import katto1 from '@/assets/katto_1.png';
+import katto1Ennen from '@/assets/katto_1_ennen.png';
+import katto1Pesty from '@/assets/katto_1_pesty.png';
+import katto2Pesty from '@/assets/katto_2_pesty.png';
+import katto2Valmis from '@/assets/katto_2_valmis.png';
+import kattoValmisPunainen from '@/assets/katto_valmis_punainen.png';
+import seina1Ennen from '@/assets/seina_1_ennen.jpeg';
+import seina1Jalkeen from '@/assets/seina_1_jalkeen.jpeg';
+import seina2Ennen from '@/assets/seina_2_ennen.jpeg';
+import seina2Jalkeen from '@/assets/seina_2_jalkeen.jpeg';
 
 type Category = 'all' | 'pinnoitus' | 'puhdistus' | 'maalaus';
 
@@ -24,37 +33,26 @@ const Referenssit = () => {
     { key: 'maalaus', label: 'Talon maalaus' },
   ];
 
-const projects = [
-    { 
-      image: katto1, 
-      category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus' 
-    },
-    { 
-      image: kattoJalkeen, 
-      category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus' 
-    },
-    { 
-      image: kattoHarmaa, 
-      category: 'puhdistus' as const, 
-      title: 'Katon pesu' 
-    },
-    { 
-      image: kattoRuskea, 
-      category: 'pinnoitus' as const, 
-      title: 'Tiilikaton pinnoitus' 
-    },
-    { 
-      image: kattoPuolet, 
-      category: 'pinnoitus' as const, 
-      title: 'Pinnoitus käynnissä' 
-    },
-    { 
-      image: kattoEnnen, 
-      category: 'puhdistus' as const, 
-      title: 'Ennen puhdistusta' 
-    },
+  const projects = [
+    { image: katto1Ennen, category: 'puhdistus' as const, title: 'Tiilikatto ennen pesua' },
+    { image: katto1Pesty, category: 'puhdistus' as const, title: 'Tiilikatto pesun jälkeen' },
+    { image: katto1, category: 'pinnoitus' as const, title: 'Tiilikatto pinnoitettuna' },
+    
+    { image: kattoEnnen, category: 'puhdistus' as const, title: 'Tiilikatto ennen käsittelyä' },
+    { image: katto2Pesty, category: 'puhdistus' as const, title: 'Tiilikatto pesun jälkeen' },
+    { image: katto2Valmis, category: 'pinnoitus' as const, title: 'Tiilikatto pinnoitettuna' },
+    
+    { image: kattoValmisPunainen, category: 'pinnoitus' as const, title: 'Valmis pinnoitus' },
+    { image: kattoJalkeen, category: 'pinnoitus' as const, title: 'Tiilikaton pinnoitus' },
+    { image: kattoHarmaa, category: 'puhdistus' as const, title: 'Harmaa tiilikatto' },
+    { image: kattoRuskea, category: 'pinnoitus' as const, title: 'Ruskea tiilikatto' },
+    { image: kattoPuolet, category: 'pinnoitus' as const, title: 'Pinnoitus käynnissä' },
+    
+    { image: seina1Ennen, category: 'maalaus' as const, title: 'Omakotitalo ennen maalausta' },
+    { image: seina1Jalkeen, category: 'maalaus' as const, title: 'Omakotitalo maalauksen jälkeen' },
+    
+    { image: seina2Ennen, category: 'maalaus' as const, title: 'Puutalo ennen maalausta' },
+    { image: seina2Jalkeen, category: 'maalaus' as const, title: 'Puutalo maalauksen jälkeen' },
   ];
 
   const filteredProjects = activeCategory === 'all' 
