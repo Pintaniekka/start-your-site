@@ -24,7 +24,6 @@ const services = [
     title: "Katon puhdistus",
     description: "Mekaaninen puhdistus ja kasvuston torjuntakäsittely pidentävät kattosi elinikää.",
     features: ["Mekaaninen puhdistus", "Torjunta-aine", "Räystäskourujen tyhjennys"],
-
     image: "/puhdistus.png",
   },
 ];

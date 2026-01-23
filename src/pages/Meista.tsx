@@ -1,37 +1,32 @@
-import { motion } from 'framer-motion';
-import { Check, MapPin, Award, Users, Target } from 'lucide-react';
-import ServicePageHero from '@/components/ServicePageHero';
-import ServiceCTA from '@/components/ServiceCTA';
+import { motion } from "framer-motion";
+import { Check, MapPin, Award, Users, Target } from "lucide-react";
+import ServicePageHero from "@/components/ServicePageHero";
+import ServiceCTA from "@/components/ServiceCTA";
 
 const Meista = () => {
   const values = [
     {
       icon: Award,
-      title: 'Laatu',
-      description: 'Emme tingi laadusta. Käytämme aina parhaita materiaaleja ja teemme työt huolellisesti.',
+      title: "Laatu",
+      description: "Emme tingi laadusta. Käytämme aina parhaita materiaaleja ja teemme työt huolellisesti.",
     },
     {
       icon: Users,
-      title: 'Asiakaslähtöisyys',
-      description: 'Kuuntelemme asiakkaitamme ja räätälöimme palvelumme heidän tarpeisiinsa.',
+      title: "Asiakaslähtöisyys",
+      description: "Kuuntelemme asiakkaitamme ja räätälöimme palvelumme heidän tarpeisiinsa.",
     },
     {
       icon: Target,
-      title: 'Luotettavuus',
-      description: 'Pidämme kiinni sovituista aikatauluista ja hinnoista. Lupaamme vain sen minkä voimme pitää.',
-    },
-    {
-      icon: MapPin,
-      title: 'Paikallisuus',
-      description: 'Olemme pirkanmaalainen perheyritys. Tunnemme alueen ja olemme aina lähellä.',
+      title: "Luotettavuus",
+      description: "Pidämme kiinni sovituista aikatauluista ja hinnoista. Lupaamme vain sen minkä voimme pitää.",
     },
   ];
 
   const facts = [
-    { number: '500+', label: 'Tyytyväistä asiakasta' },
-    { number: '15', label: 'Vuotta kokemusta' },
-    { number: '2v', label: 'Takuu töille' },
-    { number: '100%', label: 'Suosittelu' },
+    { number: "100+", label: "Tyytyväistä asiakasta" },
+    { number: "5", label: "Vuotta kokemusta" },
+    { label: "Takuu töille" },
+    { number: "100%", label: "Suosittelu" },
   ];
 
   return (
@@ -45,28 +40,21 @@ const Meista = () => {
       <section className="section-padding bg-background">
         <div className="section-container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Tarina Pintasen takana
-              </h2>
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Tarina Pintasen takana</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Pintanen Oy syntyi halusta tehdä asiat kunnolla. Perustaja huomasi, että tiilikattojen 
-                  pinnoitusalalla oli paljon toimijoita, mutta harva keskittyi todella laadukkaaseen 
-                  lopputulokseen.
+                  Pintanen Oy syntyi halusta tehdä asiat kunnolla. Perustaja huomasi, että tiilikattojen pinnoitusalalla
+                  oli paljon toimijoita, mutta harva keskittyi todella laadukkaaseen lopputulokseen.
                 </p>
                 <p>
-                  Olemme kasvaneet pienestä yrityksestä Pirkanmaan luotetuimmaksi kattopalveluiden 
-                  tarjoajaksi. Meille jokainen projekti on yhtä tärkeä – oli kyseessä sitten pieni 
-                  rivitalon katto tai suuri omakotitalon julkisivumaalaus.
+                  Olemme kasvaneet pienestä yrityksestä Pirkanmaan luotetuimmaksi kattopalveluiden tarjoajaksi. Meille
+                  jokainen projekti on yhtä tärkeä – oli kyseessä sitten pieni rivitalon katto tai suuri omakotitalon
+                  julkisivumaalaus.
                 </p>
                 <p>
-                  Uskomme, että huolellisesti tehty työ ja reilu asiakaspalvelu kantavat pitkälle. 
-                  Siksi suurin osa asiakkaistamme tulee suositusten kautta.
+                  Uskomme, että huolellisesti tehty työ ja reilu asiakaspalvelu kantavat pitkälle. Siksi suurin osa
+                  asiakkaistamme tulee suositusten kautta.
                 </p>
               </div>
             </motion.div>
@@ -104,9 +92,7 @@ const Meista = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Arvomme
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Arvomme</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Nämä periaatteet ohjaavat kaikkea tekemistämme.
             </p>
@@ -143,21 +129,19 @@ const Meista = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Miksi valita Pintanen?
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Miksi valita Pintanen?</h2>
             </motion.div>
 
             <div className="space-y-4">
               {[
-                'Erikoistuneet tiilikattojen käsittelyyn – ei yleisurakoitsijat',
-                'Käytämme vain parhaita materiaaleja (Teknos, Tikkurila)',
-                '2 vuoden kirjallinen takuu kaikille töille',
-                'Ilmainen ja sitomaton arviointi',
-                'Reilu ja läpinäkyvä hinnoittelu',
-                'Pirkanmaan paras asiakaspalvelu',
-                'Nopea reagointi yhteydenottoihin',
-                'Siisti työmaa – siivoamme aina jälkemme',
+                "Yrittäjät vahvasti mukana maalauksessa",
+                "Käytämme vain parhaita materiaaleja",
+                "Takuu kaikille töille",
+                "Ilmainen ja sitomaton arviointi",
+                "Reilu ja läpinäkyvä hinnoittelu",
+                "Hyvä asiakaspalvelu",
+                "Nopea vastaus yhteydenottoihin",
+                "Siisti työmaa – siivoamme aina jälkemme",
               ].map((item, index) => (
                 <motion.div
                   key={item}
@@ -190,21 +174,11 @@ const Meista = () => {
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <MapPin className="w-10 h-10 text-primary" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Toiminta-alue
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Palvelemme koko Pirkanmaan alueella ja lähikunnissa:
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Toiminta-alue</h2>
+            <p className="text-lg text-muted-foreground mb-6">Palvelemme koko Pirkanmaan alueella ja lähikunnissa:</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {[
-                'Tampere', 'Nokia', 'Pirkkala', 'Lempäälä', 'Kangasala', 
-                'Ylöjärvi', 'Sastamala', 'Valkeakoski', 'Akaa', 'Hämeenkyrö'
-              ].map((city) => (
-                <span 
-                  key={city}
-                  className="px-4 py-2 bg-card rounded-full text-foreground font-medium"
-                >
+              {["Tampere", "Nokia", "Hämeenkyrö", "Sastamala", "Kangasala", "Forssa"].map((city) => (
+                <span key={city} className="px-4 py-2 bg-card rounded-full text-foreground font-medium">
                   {city}
                 </span>
               ))}
@@ -213,7 +187,7 @@ const Meista = () => {
         </div>
       </section>
 
-      <ServiceCTA 
+      <ServiceCTA
         title="Ota yhteyttä"
         subtitle="Kerromme mielellämme lisää yrityksestämme ja palveluistamme. Vastaamme kaikkiin kysymyksiin!"
       />
