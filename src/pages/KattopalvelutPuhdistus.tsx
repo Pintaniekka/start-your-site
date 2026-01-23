@@ -20,7 +20,7 @@ const KattopalvelutPuhdistus = () => {
     {
       icon: Sparkles,
       title: 'Rikkinäisten tiilten vaihto',
-      description: 'Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme havainnot.',
+      description: 'Vaihdamme aina rikkinäiset kattotiilet uusiin.',
     },
     {
       icon: Clock,
