@@ -8,8 +8,8 @@ const KattopalvelutPuhdistus = () => {
   const features = [
     {
       icon: Droplets,
-      title: 'Ammattitaitoinen pesu',
-      description: 'Käytämme tehokkaita mutta hellävaraisia pesumenetelmiä, jotka eivät vahingoita tiiliä.',
+      title: 'Mekaaninen puhdistus',
+      description: 'Puhdistamme katon mekaanisesti ilman painepesua – painepesuri voi kuluttaa tiilen pintaa.',
     },
     {
       icon: Shield,
@@ -48,9 +48,44 @@ const KattopalvelutPuhdistus = () => {
     <div>
       <ServicePageHero
         title="Tiilikaton puhdistus"
-        subtitle="Ammattimainen katon pesu ja sammaleentorjunta – pidentää kattosi ikää huomattavasti"
+        subtitle="Ammattimainen mekaaninen puhdistus ja sammaleentorjunta – pidentää kattosi ikää huomattavasti"
         backgroundImage={kattoImage}
       />
+
+      {/* Seloste-osio */}
+      <section className="section-padding bg-background">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
+              Tiilikaton mekaaninen puhdistus ja käsittely
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground">
+              <p>
+                Suosittelemme tiilikaton tarkastusta vuosittain. Sammal, jäkälä ja roskat kannattaa 
+                poistaa säännöllisesti, jotta katto pysyy hyvässä kunnossa mahdollisimman pitkään.
+              </p>
+              <p>
+                <strong className="text-foreground">Emme käytä painepesuria</strong> tiilikaton puhdistuksessa, 
+                koska painepesuri voi kuluttaa tiilen pintaa ja lyhentää katon käyttöikää. Sen sijaan 
+                puhdistamme katon mekaanisesti käsityövälineillä, mikä säästää tiilen pintaa.
+              </p>
+              <p>
+                Puhdistuksen jälkeen levitämme sammaleentorjunta-aineen, joka estää uuden kasvuston 
+                muodostumisen. Käsittely suojaa kattoa useiksi vuosiksi.
+              </p>
+              <p>
+                Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme mahdollisista 
+                korjaustarpeista. Rikkoutuneet tiilet vaihdetaan tarvittaessa uusiin.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Features */}
       <section className="section-padding bg-background">
