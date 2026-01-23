@@ -9,7 +9,7 @@ const KattopalvelutPuhdistus = () => {
     {
       icon: Droplets,
       title: "Mekaaninen puhdistus",
-      description: "Puhdistamme katon mekaanisesti ilman painepesua",
+      description: "Puhdistamme katon mekaanisesti ilman painepesua – painepesuri voi kuluttaa tiilen pintaa.",
     },
     {
       icon: Shield,
@@ -31,10 +31,10 @@ const KattopalvelutPuhdistus = () => {
   const benefits = [
     "Pidentää katon käyttöikää",
     "Parantaa talon ulkonäköä",
-    "Estää kosteusongelmia",
+    "Estää uuden kasvuston syntymistä",
+    "Estää tiilten halkeamista",
     "Ennaltaehkäisevä huolto",
     "Edullisempi kuin pinnoitus",
-    "Ilmainen kuntotarkastus mukana",
   ];
 
   const pricing = [
