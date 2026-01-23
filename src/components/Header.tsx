@@ -46,7 +46,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHomePage
-          ? 'bg-card/95 backdrop-blur-md shadow-lg'
+          ? 'bg-primary/95 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -68,11 +68,7 @@ const Header = () => {
                   onMouseLeave={() => setIsKattoDropdownOpen(false)}
                 >
                   <button
-                    className={`flex items-center gap-1 font-medium transition-colors duration-200 ${
-                      isScrolled || !isHomePage
-                        ? 'text-foreground hover:text-primary'
-                        : 'text-primary-foreground hover:text-primary-foreground/80'
-                    }`}
+                    className="flex items-center gap-1 font-medium transition-colors duration-200 text-primary-foreground hover:text-primary-foreground/80"
                   >
                     {item.label}
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isKattoDropdownOpen ? 'rotate-180' : ''}`} />
@@ -104,11 +100,7 @@ const Header = () => {
                 <Link
                   key={item.href}
                   to={item.href}
-                  className={`font-medium transition-colors duration-200 ${
-                    isScrolled || !isHomePage
-                      ? 'text-foreground hover:text-primary'
-                      : 'text-primary-foreground hover:text-primary-foreground/80'
-                  } ${location.pathname === item.href ? 'text-primary' : ''}`}
+                  className={`font-medium transition-colors duration-200 text-primary-foreground hover:text-primary-foreground/80 ${location.pathname === item.href ? 'text-accent' : ''}`}
                 >
                   {item.label}
                 </Link>
@@ -119,11 +111,7 @@ const Header = () => {
           {/* CTA Button */}
           <a
             href="tel:+358401234567"
-            className={`hidden md:flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm lg:text-base ${
-              isScrolled || !isHomePage
-                ? 'bg-primary text-primary-foreground hover:bg-primary-dark'
-                : 'bg-accent text-accent-foreground hover:scale-105'
-            }`}
+            className="hidden md:flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2.5 rounded-xl font-semibold transition-all duration-300 text-sm lg:text-base bg-accent text-accent-foreground hover:scale-105"
           >
             <Phone className="w-4 h-4" />
             Soita meille
@@ -132,9 +120,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg ${
-              isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
-            }`}
+            className="md:hidden p-2 rounded-lg text-primary-foreground"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
