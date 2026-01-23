@@ -1,16 +1,16 @@
-import { motion } from 'framer-motion';
-import kattoHarmaa from '@/assets/katto_harmaa.png';
-import kattoRuskea from '@/assets/katto_ruskea.png';
-import kattoPuolet from '@/assets/katto_puolet.png';
-import katto1 from '@/assets/katto_1.png';
-import kattoJalkeen from '@/assets/katto_jalkeen.png';
+import { motion } from "framer-motion";
+import kattoHarmaa from "@/assets/katto_harmaa.png";
+import kattoRuskea from "@/assets/katto_ruskea.png";
+import kattoPuolet from "@/assets/katto_puolet.png";
+import katto1 from "@/assets/katto_1.png";
+import kattoJalkeen from "@/assets/katto_jalkeen.png";
 
 const images = [
-  { src: katto1, alt: 'Valmis punainen tiilikatto', category: 'Tiilikaton pinnoitus' },
-  { src: kattoHarmaa, alt: 'Harmaa tiilikatto', category: 'Tiilikaton pinnoitus' },
-  { src: kattoRuskea, alt: 'Ruskea tiilikatto', category: 'Tiilikaton pinnoitus' },
-  { src: kattoPuolet, alt: 'Katon puhdistus - ennen ja jälkeen', category: 'Katon puhdistus' },
-  { src: kattoJalkeen, alt: 'Punainen katto valmiina', category: 'Tiilikaton pinnoitus' },
+  { src: katto1, alt: "Valmis punainen tiilikatto", category: "Tiilikaton pinnoitus" },
+  { src: kattoHarmaa, alt: "Harmaa tiilikatto", category: "Tiilikaton pinnoitus" },
+  { src: kattoRuskea, alt: "Ruskea tiilikatto", category: "Tiilikaton pinnoitus" },
+  { src: kattoPuolet, alt: "Katon pesu", category: "Tiilikaton pinnoitus" },
+  { src: kattoJalkeen, alt: "Punainen katto valmiina", category: "Tiilikaton pinnoitus" },
 ];
 
 const Gallery = () => {
@@ -23,9 +23,7 @@ const Gallery = () => {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">
-            Referenssit
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Referenssit</h2>
           <p className="text-muted-foreground text-lg">
             Tutustu tekemiimme töihin. Jokainen projekti on tehty huolella ja ammattitaidolla.
           </p>
