@@ -1,51 +1,40 @@
 
-## Meistä-sivun ja navigaation päivitys
 
-### Muutokset
+## Ulkomaalaus-hintalaskurin päivitys
 
-**1. Lisätään uusi kansikuva (pensselikuva.png)**
-- Kopioidaan ladattu kuva `src/assets/pensselikuva.png` -kansioon
-- Käytetään kuvaa ServicePageHero-komponentin taustakuvana Meistä-sivulla
+Päivitän ulkomaalaus-laskurin käyttämään uutta hinnoittelulogiikkaa päivitetyillä arvoilla.
 
-**2. Navigaatiolinkin muutos (Header.tsx)**
-- Rivi 48: `'Mikä ihmeen Pintanen?'` → `'Tutustu Pintaseen'`
-- Linkki vie edelleen `/meista`-sivulle
+### Muutokset edelliseen suunnitelmaan
 
-**3. Meistä-sivun pääotsikon muutos (Meista.tsx)**
-- ServicePageHero title: `'Mikä ihmeen Pintanen?'` → `'Tutustu Pintaseen'`
-- Lisätään `backgroundImage` prop käyttämään uutta pensselikuvaa
-- Tekstiosion otsikko (h2) "Mikä ihmeen Pintanen?" säilyy ennallaan
+- **Kilpailukerroin**: 0.8 → **0.9** (10% alennus alkuperäisistä hinnoista)
+- **Liukusäätimen väli**: 50-400 → **50-350 m²**
 
-**4. Footerin linkkien korjaus (Footer.tsx)**
-- Muutetaan nykyiset ankkurilinkit (`#palvelut`, `#hintalaskuri`) oikeiksi React Router -linkeiksi
-- Palvelut-osion linkit:
-  - Tiilikaton pinnoitus → `/kattopalvelut/pinnoitus`
-  - Ulkomaalaus → `/talon-maalaus`
-  - Katon puhdistus → `/kattopalvelut/puhdistus`
-  - Hintalaskuri → `/#hintalaskuri` (etusivun ankkuri)
+### Toteutus
+
+**1. Syötekentät**
+- **Talon pohjapinta-ala**: Liukusäädin + numerokenttä (50-350 m²)
+- **Kerrosten lukumäärä**: "1", "1,5" tai "2"
+- **Hilseilyn määrä**: "Ei hilseilyä", "1-2 seinällä", "Yli 3 seinällä"
+
+**2. Hinnoittelulogiikka**
+
+Laskennan perusteet:
+- Perushinta interpoloidaan neliöpisteiden välillä (100m²: ~4230€, 200m²: ~6000€, 300m²: ~7800€)
+- Kerroskerroin: 1 krs = 1.0, 1.5 krs = 1.225, 2 krs = 1.475
+- Hilseilykerroin: Ei hilseilyä = 1.0, 1-2 seinää = 1.15, Yli 3 seinää = 1.275
+- **Kilpailukerroin 0.9** laskee lopullista hintaa 10%
+
+**3. UI-parannukset**
+- Liukusäädin pinta-alalle (50-350 m²)
+- Numeroarvo näytetään liukusäätimen vieressä
+- Selkeät valintapainikkeet kerroksille ja hilseilylle
+- Hinta näytetään haarukkana (±10% keskiarvosta)
 
 ---
 
-### Tekniset yksityiskohdat
+### Tekninen toteutus
 
-**Uusi tiedosto:** `src/assets/pensselikuva.png` (kopioidaan ladatusta kuvasta)
+| Tiedosto | Muutos |
+|----------|--------|
+| `src/components/PriceCalculator.tsx` | Päivitetään ulkomaalaus-laskurin logiikka ja UI |
 
-**Header.tsx muutos (rivi 48):**
-```tsx
-label: 'Tutustu Pintaseen',
-```
-
-**Meista.tsx muutokset:**
-- Import lisäys: `import pensselikuva from '@/assets/pensselikuva.png';`
-- ServicePageHero props:
-```tsx
-<ServicePageHero
-  title="Tutustu Pintaseen"
-  subtitle="Tutustu meihin – olemme pirkanmaalainen perheyritys..."
-  backgroundImage={pensselikuva}
-/>
-```
-
-**Footer.tsx muutokset:**
-- Import lisäys: `import { Link } from 'react-router-dom';`
-- Palvelut-linkkien muutos käyttämään `<Link to="...">` -komponenttia oikeiden reittien kanssa
