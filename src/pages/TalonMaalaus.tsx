@@ -3,7 +3,7 @@ import { Check, Paintbrush, Shield, Clock, BadgeCheck, Home, Sun } from 'lucide-
 import ServicePageHero from '@/components/ServicePageHero';
 import ServiceCTA from '@/components/ServiceCTA';
 import KotitalousVahennys from '@/components/KotitalousVahennys';
-import heroImage from '@/assets/seina_ennen_jalkeen.png';
+import heroImage from '@/assets/seina_ennen_jalkeen_hero.png';
 
 const TalonMaalaus = () => {
   const processSteps = [
