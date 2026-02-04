@@ -1,8 +1,6 @@
 import logo from '@/assets/logo.png';
-
 const Footer = () => {
-  return (
-    <footer className="bg-primary text-primary-foreground py-12">
+  return <footer className="bg-primary text-primary-foreground py-12">
       <div className="section-container">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Info */}
@@ -29,7 +27,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Yhteystiedot</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li>Puh: 040 123 4567</li>
+              <li>Puh: 040 964 0066</li>
               <li>info@pintanen.fi</li>
               <li>Y-tunnus: 1234567-8</li>
             </ul>
@@ -40,8 +38,6 @@ const Footer = () => {
           <p>© {new Date().getFullYear()} Pintanen Oy. Kaikki oikeudet pidätetään.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
