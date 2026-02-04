@@ -6,7 +6,7 @@ import katto1 from "@/assets/katto_1.png";
 import kattoJalkeen from "@/assets/katto_jalkeen.png";
 
 const images = [
-  { src: katto1, alt: "Valmis punainen tiilikatto", category: "Tiilikaton pinnoitus" },
+  { src: katto1, alt: "Valmis punainen tiilikatto (3850€)", category: "Tiilikaton pinnoitus" },
   { src: kattoHarmaa, alt: "Harmaa tiilikatto", category: "Tiilikaton pinnoitus" },
   { src: kattoRuskea, alt: "Ruskea tiilikatto", category: "Tiilikaton pinnoitus" },
   { src: kattoPuolet, alt: "Katon pesu", category: "Tiilikaton pinnoitus" },
