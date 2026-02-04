@@ -68,7 +68,7 @@ const Hero = () => {
                   <Shield className="w-5 h-5 text-accent" />
                 </div>
                 <div>
-                  <div className="text-white font-bold text-lg">100+</div>
+                  <div className="text-white font-bold text-lg">200+</div>
                   <div className="text-white/50 text-sm">tyytyväistä asiakasta</div>
                 </div>
               </div>
