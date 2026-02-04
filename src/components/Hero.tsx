@@ -32,7 +32,7 @@ const Hero = () => {
 
             {/* Main Heading */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-heading">
-              Uutta ilmettä kotisi <span className="text-accent">katoille</span> ja <span className="text-accent">seinille</span>
+              Uutta ilmettä kotisi <span className="text-accent">katoille ja seinille</span>
             </h1>
 
             {/* Subheading */}
