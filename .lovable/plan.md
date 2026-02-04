@@ -1,37 +1,58 @@
 
-# Ulkoasun päivitys: Kirkkaampi Teal + Otsikkokorostus
+# Hinnoittelun yksinkertaistaminen ja kotitalousvähennys-osion lisäys
 
 ## Muutokset
 
-### 1. Aksenttiväri: Kirkkaampi Teal
-Päivitetään aksenttiväri nykyisestä `hsl(200 50% 50%)` kirkkaampaaan versioon `hsl(175 70% 45%)` - tämä on eloisa teal, joka erottuu hyvin tummaa taustaa vasten.
+### 1. Katon puhdistuksen hinnoittelu (KattopalvelutPuhdistus.tsx)
 
-**Tiedosto:** `src/index.css`
-- Light mode: `--accent: 175 70% 45%`
-- Dark mode: `--accent: 175 75% 50%`
+Nykyinen hintataulukko-osio (rivit 152-173) korvataan yksinkertaisemmalla tekstillä:
 
-### 2. Otsikon korostus (Vaihtoehto A)
-Muutetaan hero-otsikko niin, että vain avainsanat "katoille" ja "seinille" ovat aksenttivärillä erikseen.
+**Uusi sisältö:**
+- Otsikko: "Hinnoittelu"
+- Teksti: "Tiilikaton mekaanisen puhdistuksen ja käsittelyn hinta riippuu katon koosta ja sammaleen määrästä."
+- Alkaen: **800 €**
+- Kehotus: "Pyydä tarjous, niin kerromme tarkan hinnan!"
 
-**Tiedosto:** `src/components/Hero.tsx`
+Layoutissa Benefits-osio laajennetaan koko leveydelle ja hinnoittelu näytetään kompaktina korttina sen alapuolella.
 
-Nykyinen:
-```
-Uutta ilmettä kotisi <span className="text-accent">katoille ja seinille</span>
-```
+---
 
-Uusi:
-```
-Uutta ilmettä kotisi <span className="text-accent">katoille</span> ja <span className="text-accent">seinille</span>
-```
+### 2. Uusi KotitalousVahennys-komponentti
 
-## Vaikutusalue
-- Kaikki `text-accent` ja `bg-accent` -elementit sivustolla
-- Hero-otsikko
-- CTA-napit
-- Ikonit (MapPin, Award, Shield, Clock)
-- Palvelukortit ja badget
+Luodaan uusi tiedosto `src/components/KotitalousVahennys.tsx`:
 
-## Toteutusjärjestys
-1. Päivitä CSS-muuttujat (`src/index.css`)
-2. Muokkaa hero-otsikko (`src/components/Hero.tsx`)
+**Sisältö:**
+- Otsikko: "Hyödynnä kotitalousvähennys"
+- Selite: Yritykseltä ostettu työ – saat vähentää 35 % työn osuudesta
+- Maksimivähennys: 1 600 €/henkilö/vuosi
+- Esimerkkilaskema kortissa:
+  - Urakan kokonaishinta: 5 000 €
+  - Työn osuus: 4 000 €
+  - Vähennys (35 %): 1 400 €
+  - Lopullinen hinta: 3 600 €
+
+**Tyyli:**
+- Vaaleanvihreä/teal-korostus ikonilla (esim. Euro tai Calculator)
+- Animoitu motion.div
+- Toimii sekä etusivulla että palvelusivuilla
+
+---
+
+### 3. Komponentin lisäys sivuille
+
+| Sivu | Sijainti |
+|------|----------|
+| Index.tsx | Contact-osion jälkeen (footerin yläpuolella) |
+| KattopalvelutPinnoitus.tsx | Ennen ServiceCTA:ta |
+| KattopalvelutPuhdistus.tsx | Ennen ServiceCTA:ta |
+| TalonMaalaus.tsx | Ennen ServiceCTA:ta |
+
+---
+
+## Muutettavat tiedostot
+
+1. **src/pages/KattopalvelutPuhdistus.tsx** – Hinnoitteluosion uudelleenkirjoitus
+2. **src/components/KotitalousVahennys.tsx** – Uusi komponentti (luodaan)
+3. **src/pages/Index.tsx** – Lisätään KotitalousVahennys ennen loppua
+4. **src/pages/KattopalvelutPinnoitus.tsx** – Lisätään KotitalousVahennys ennen ServiceCTA
+5. **src/pages/TalonMaalaus.tsx** – Lisätään KotitalousVahennys ennen ServiceCTA
