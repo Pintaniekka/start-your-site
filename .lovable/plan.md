@@ -1,39 +1,92 @@
 
-# Meistä-sivun sisällön uudelleenjärjestely
 
-## Tavoite
-Yksinkertaistetaan sivun rakenne ja laitetaan käyttäjän antama teksti sivun alkuun selkeässä, suoraviivaisessa muodossa.
+## GitHub Actions Workflow GitHub Pagesiin
 
-## Muutokset
+Luon sinulle GitHub Actions -workflow-tiedoston, joka julkaisee Vite-projektin automaattisesti GitHub Pagesiin aina kun pushaat koodia main-haaraan.
 
-### 1. Sivun rakenne (ylhäältä alas)
+### Mitä teen
 
-**Hero-osio** - pysyy ennallaan
+1. **Luon workflow-tiedoston** `.github/workflows/deploy.yml`
+   - Käynnistyy automaattisesti kun koodi pushataan main-haaraan
+   - Asentaa riippuvuudet, rakentaa projektin ja julkaisee sen
 
-**Tekstisisältö (uusi järjestys, yksinkertaisempi)**:
-1. "Mikä ihmeen Pintanen?" - otsikko + kaksi kappaletta tekstiä
-2. "Kaksi veljestä, kaksi erikoisalaa" - otsikko + johdanto + Eerik ja Eemil teksteinä (ei kortteja)
-3. "Miksi valita meidät?" - otsikko + kaksi kappaletta
-4. "Leikkimökeistä taloyhtiöihin" - otsikko + teksti + lista + lopputeksti
+2. **Päivitän vite.config.ts** lisäämällä `base: '/'` asetuksen
+   - Tämä varmistaa että polut toimivat oikein custom-domainilla (pintanen.fi)
 
-**Muut osiot** (sivun loppuun):
-- Fakta-numerot (100+, 5, 2-5, 100%)
-- Arvot
-- Miksi valita Pintanen -lista
-- Toiminta-alue
-- CTA
+### Workflow toimii näin
 
-### 2. Tekstisisällön esitys
+1. Checkout - hakee koodin repositoriosta
+2. Setup Node.js - asentaa Node.js:n
+3. Install - asentaa riippuvuudet (`npm ci`)
+4. Build - rakentaa tuotantoversion (`npm run build`)
+5. Deploy - julkaisee `dist`-kansion GitHub Pagesiin
 
-Käytetään yksinkertaista tekstimuotoa ilman kortteja pääsisällölle:
-- Selkeät otsikot
-- Leipäteksti kappaleina
-- Eerik ja Eemil listataan bullet-pointeina, ei korteissa
+### Huomioitavaa
 
-### 3. Takuutekstin tarkistus
+- Projekti käyttää jo custom-domainia `pintanen.fi` (CNAME-tiedosto on valmiina)
+- GitHub Pages täytyy ottaa käyttöön repositorion asetuksista: Settings > Pages > Source: "GitHub Actions"
+- Workflow käyttää virallista `actions/deploy-pages` -actionia
 
-Varmistetaan että facts-taulukossa on `{ number: "2-5", label: "Vuotta takuuta" }` - iso V (on jo oikein nykyisessä koodissa).
+---
 
-## Muutettava tiedosto
+### Tekniset yksityiskohdat
 
-`src/pages/Meista.tsx` - sisällön uudelleenjärjestely yksinkertaisempaan muotoon
+**Uusi tiedosto:** `.github/workflows/deploy.yml`
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+**Muutos:** `vite.config.ts` - lisätään `base: '/'`
+
