@@ -3,6 +3,7 @@ import { Check, Paintbrush, Shield, Clock, BadgeCheck, Home, Sun } from 'lucide-
 import ServicePageHero from '@/components/ServicePageHero';
 import ServiceCTA from '@/components/ServiceCTA';
 import KotitalousVahennys from '@/components/KotitalousVahennys';
+import heroImage from '@/assets/seina_ennen_jalkeen.png';
 
 const TalonMaalaus = () => {
   const processSteps = [
@@ -54,6 +55,7 @@ const TalonMaalaus = () => {
       <ServicePageHero
         title="Talon maalaus"
         subtitle="Ammattitaitoinen ulkomaalaus laadukkailla materiaaleilla – 2 vuoden takuu"
+        backgroundImage={heroImage}
       />
 
       {/* Services */}
