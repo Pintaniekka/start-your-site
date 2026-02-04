@@ -137,7 +137,7 @@ const Header = () => {
                   </div> : <Link key={item.href} to={item.href} className="py-3 px-4 text-foreground font-medium hover:bg-muted rounded-lg transition-colors">
                     {item.label}
                   </Link>)}
-              <a href="tel:+358401234567" className="mt-2 flex items-center justify-center gap-2 py-3 px-4 bg-primary text-primary-foreground rounded-xl font-semibold">
+              <a href="tel:+358409640066" className="mt-2 flex items-center justify-center gap-2 py-3 px-4 bg-primary text-primary-foreground rounded-xl font-semibold">
                 <Phone className="w-4 h-4" />
                 Soita meille
               </a>

@@ -27,9 +27,9 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Yhteystiedot</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
+              <li><a href="tel:+358409640066" className="hover:text-primary-foreground transition-colors">040 964 0066</a></li>
+              <li><a href="mailto:myynti@pintanen.fi" className="hover:text-primary-foreground transition-colors">myynti@pintanen.fi</a></li>
               <li>Y-tunnus: 3525786-9</li>
-              <li>info@pintanen.fi</li>
-              <li>Y-tunnus: 1234567-8</li>
             </ul>
           </div>
         </div>
