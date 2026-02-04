@@ -1,58 +1,39 @@
 
-# Hinnoittelun yksinkertaistaminen ja kotitalousvähennys-osion lisäys
+# Meistä-sivun sisällön uudelleenjärjestely
+
+## Tavoite
+Yksinkertaistetaan sivun rakenne ja laitetaan käyttäjän antama teksti sivun alkuun selkeässä, suoraviivaisessa muodossa.
 
 ## Muutokset
 
-### 1. Katon puhdistuksen hinnoittelu (KattopalvelutPuhdistus.tsx)
+### 1. Sivun rakenne (ylhäältä alas)
 
-Nykyinen hintataulukko-osio (rivit 152-173) korvataan yksinkertaisemmalla tekstillä:
+**Hero-osio** - pysyy ennallaan
 
-**Uusi sisältö:**
-- Otsikko: "Hinnoittelu"
-- Teksti: "Tiilikaton mekaanisen puhdistuksen ja käsittelyn hinta riippuu katon koosta ja sammaleen määrästä."
-- Alkaen: **800 €**
-- Kehotus: "Pyydä tarjous, niin kerromme tarkan hinnan!"
+**Tekstisisältö (uusi järjestys, yksinkertaisempi)**:
+1. "Mikä ihmeen Pintanen?" - otsikko + kaksi kappaletta tekstiä
+2. "Kaksi veljestä, kaksi erikoisalaa" - otsikko + johdanto + Eerik ja Eemil teksteinä (ei kortteja)
+3. "Miksi valita meidät?" - otsikko + kaksi kappaletta
+4. "Leikkimökeistä taloyhtiöihin" - otsikko + teksti + lista + lopputeksti
 
-Layoutissa Benefits-osio laajennetaan koko leveydelle ja hinnoittelu näytetään kompaktina korttina sen alapuolella.
+**Muut osiot** (sivun loppuun):
+- Fakta-numerot (100+, 5, 2-5, 100%)
+- Arvot
+- Miksi valita Pintanen -lista
+- Toiminta-alue
+- CTA
 
----
+### 2. Tekstisisällön esitys
 
-### 2. Uusi KotitalousVahennys-komponentti
+Käytetään yksinkertaista tekstimuotoa ilman kortteja pääsisällölle:
+- Selkeät otsikot
+- Leipäteksti kappaleina
+- Eerik ja Eemil listataan bullet-pointeina, ei korteissa
 
-Luodaan uusi tiedosto `src/components/KotitalousVahennys.tsx`:
+### 3. Takuutekstin tarkistus
 
-**Sisältö:**
-- Otsikko: "Hyödynnä kotitalousvähennys"
-- Selite: Yritykseltä ostettu työ – saat vähentää 35 % työn osuudesta
-- Maksimivähennys: 1 600 €/henkilö/vuosi
-- Esimerkkilaskema kortissa:
-  - Urakan kokonaishinta: 5 000 €
-  - Työn osuus: 4 000 €
-  - Vähennys (35 %): 1 400 €
-  - Lopullinen hinta: 3 600 €
+Varmistetaan että facts-taulukossa on `{ number: "2-5", label: "Vuotta takuuta" }` - iso V (on jo oikein nykyisessä koodissa).
 
-**Tyyli:**
-- Vaaleanvihreä/teal-korostus ikonilla (esim. Euro tai Calculator)
-- Animoitu motion.div
-- Toimii sekä etusivulla että palvelusivuilla
+## Muutettava tiedosto
 
----
-
-### 3. Komponentin lisäys sivuille
-
-| Sivu | Sijainti |
-|------|----------|
-| Index.tsx | Contact-osion jälkeen (footerin yläpuolella) |
-| KattopalvelutPinnoitus.tsx | Ennen ServiceCTA:ta |
-| KattopalvelutPuhdistus.tsx | Ennen ServiceCTA:ta |
-| TalonMaalaus.tsx | Ennen ServiceCTA:ta |
-
----
-
-## Muutettavat tiedostot
-
-1. **src/pages/KattopalvelutPuhdistus.tsx** – Hinnoitteluosion uudelleenkirjoitus
-2. **src/components/KotitalousVahennys.tsx** – Uusi komponentti (luodaan)
-3. **src/pages/Index.tsx** – Lisätään KotitalousVahennys ennen loppua
-4. **src/pages/KattopalvelutPinnoitus.tsx** – Lisätään KotitalousVahennys ennen ServiceCTA
-5. **src/pages/TalonMaalaus.tsx** – Lisätään KotitalousVahennys ennen ServiceCTA
+`src/pages/Meista.tsx` - sisällön uudelleenjärjestely yksinkertaisempaan muotoon
