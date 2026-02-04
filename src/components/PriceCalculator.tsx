@@ -5,18 +5,41 @@ import { Calculator, Home, ArrowRight, Check } from 'lucide-react';
 type CalculatorType = 'roof' | 'wall' | null;
 type RoofSlope = '5-19' | '20-30' | '31+' | null;
 type WallStories = '1' | '1.5' | '2' | null;
-type WallPeeling = 'none' | '1-2' | '3-4' | null;
+type WallPeeling = 'none' | '1-2' | '3+' | null;
+
+// Price interpolation helper
+const interpolatePrice = (m2: number): number => {
+  const pricePoints = [
+    { m2: 50, price: 2800 },
+    { m2: 100, price: 4230 },
+    { m2: 200, price: 6000 },
+    { m2: 300, price: 7800 },
+    { m2: 350, price: 8700 },
+  ];
+
+  if (m2 <= pricePoints[0].m2) return pricePoints[0].price;
+  if (m2 >= pricePoints[pricePoints.length - 1].m2) return pricePoints[pricePoints.length - 1].price;
+
+  for (let i = 0; i < pricePoints.length - 1; i++) {
+    if (m2 >= pricePoints[i].m2 && m2 <= pricePoints[i + 1].m2) {
+      const ratio = (m2 - pricePoints[i].m2) / (pricePoints[i + 1].m2 - pricePoints[i].m2);
+      return pricePoints[i].price + ratio * (pricePoints[i + 1].price - pricePoints[i].price);
+    }
+  }
+  return pricePoints[0].price;
+};
 
 const PriceCalculator = () => {
   const [calculatorType, setCalculatorType] = useState<CalculatorType>(null);
-  const [squareMeters, setSquareMeters] = useState<string>('');
+  const [squareMeters, setSquareMeters] = useState<number>(150);
+  const [roofSquareMeters, setRoofSquareMeters] = useState<string>('');
   const [roofSlope, setRoofSlope] = useState<RoofSlope>(null);
   const [wallStories, setWallStories] = useState<WallStories>(null);
   const [wallPeeling, setWallPeeling] = useState<WallPeeling>(null);
 
   const calculateRoofPrice = () => {
-    if (!squareMeters || !roofSlope) return null;
-    const m2 = parseFloat(squareMeters);
+    if (!roofSquareMeters || !roofSlope) return null;
+    const m2 = parseFloat(roofSquareMeters);
     
     let pricePerM2Min: number, pricePerM2Max: number;
     switch (roofSlope) {
@@ -40,39 +63,46 @@ const PriceCalculator = () => {
   };
 
   const calculateWallPrice = () => {
-    if (!squareMeters || !wallStories || !wallPeeling) return null;
-    const m2 = parseFloat(squareMeters);
+    if (!wallStories || !wallPeeling) return null;
     
-    // Base price per m2 based on stories
-    let basePrice: number;
-    switch (wallStories) {
-      case '1': basePrice = 30; break;
-      case '1.5': basePrice = 45; break;
-      case '2': basePrice = 55; break;
-      default: return null;
-    }
+    // Get interpolated base price
+    const basePrice = interpolatePrice(squareMeters);
+    
+    // Story multiplier
+    const storyMultipliers: Record<string, number> = {
+      '1': 1.0,
+      '1.5': 1.225,
+      '2': 1.475,
+    };
+    
+    // Peeling multiplier
+    const peelingMultipliers: Record<string, number> = {
+      'none': 1.0,
+      '1-2': 1.15,
+      '3+': 1.275,
+    };
 
-    // Add peeling surcharge
-    let peelingMultiplier: number;
-    switch (wallPeeling) {
-      case 'none': peelingMultiplier = 1; break;
-      case '1-2': peelingMultiplier = 1.15; break;
-      case '3-4': peelingMultiplier = 1.3; break;
-      default: return null;
-    }
-
-    const pricePerM2 = basePrice * peelingMultiplier;
-    const totalMin = m2 * pricePerM2;
-    const totalMax = m2 * pricePerM2 * 1.2;
-
-    return { min: Math.round(totalMin), max: Math.round(totalMax) };
+    const storyMultiplier = storyMultipliers[wallStories] || 1;
+    const peelingMultiplier = peelingMultipliers[wallPeeling] || 1;
+    
+    // Competition multiplier (10% discount)
+    const competitionMultiplier = 0.9;
+    
+    const finalPrice = basePrice * storyMultiplier * peelingMultiplier * competitionMultiplier;
+    
+    // Return price range (±10%)
+    return { 
+      min: Math.round(finalPrice * 0.9), 
+      max: Math.round(finalPrice * 1.1) 
+    };
   };
 
   const roofPrice = calculateRoofPrice();
   const wallPrice = calculateWallPrice();
 
   const resetCalculator = () => {
-    setSquareMeters('');
+    setSquareMeters(150);
+    setRoofSquareMeters('');
     setRoofSlope(null);
     setWallStories(null);
     setWallPeeling(null);
@@ -164,15 +194,15 @@ const PriceCalculator = () => {
                   </label>
                   <input
                     type="number"
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
+                    value={roofSquareMeters}
+                    onChange={(e) => setRoofSquareMeters(e.target.value)}
                     placeholder="Esim. 150"
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
 
                 {/* Roof Slope */}
-                {squareMeters && (
+                {roofSquareMeters && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -253,55 +283,72 @@ const PriceCalculator = () => {
                   </button>
                 </div>
 
-                {/* Square Meters */}
+                {/* Square Meters - Slider */}
                 <div className="mb-8">
                   <label className="block text-foreground font-medium mb-3">
-                    1. Maalattava pinta-ala (m²)
+                    1. Talon pohjapinta-ala (m²)
                   </label>
-                  <input
-                    type="number"
-                    value={squareMeters}
-                    onChange={(e) => setSquareMeters(e.target.value)}
-                    placeholder="Esim. 120"
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
+                  <div className="flex items-center gap-6">
+                    <input
+                      type="range"
+                      min="50"
+                      max="350"
+                      step="10"
+                      value={squareMeters}
+                      onChange={(e) => setSquareMeters(Number(e.target.value))}
+                      className="flex-1 h-2 bg-secondary rounded-full appearance-none cursor-pointer accent-primary"
+                    />
+                    <div className="flex items-center gap-2 min-w-[100px]">
+                      <input
+                        type="number"
+                        min="50"
+                        max="350"
+                        value={squareMeters}
+                        onChange={(e) => setSquareMeters(Math.min(350, Math.max(50, Number(e.target.value))))}
+                        className="w-20 px-3 py-2 rounded-lg border border-border bg-background text-foreground text-center focus:outline-none focus:ring-2 focus:ring-primary"
+                      />
+                      <span className="text-muted-foreground">m²</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                    <span>50 m²</span>
+                    <span>350 m²</span>
+                  </div>
                 </div>
 
                 {/* Stories */}
-                {squareMeters && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-8"
-                  >
-                    <label className="block text-foreground font-medium mb-3">
-                      2. Talon kerrokset
-                    </label>
-                    <div className="grid grid-cols-3 gap-4">
-                      {[
-                        { value: '1', label: '1 kerros' },
-                        { value: '1.5', label: '1,5 kerrosta' },
-                        { value: '2', label: '2 kerrosta' },
-                      ].map((option) => (
-                        <button
-                          key={option.value}
-                          onClick={() => setWallStories(option.value as WallStories)}
-                          className={`p-4 rounded-xl border-2 transition-all ${
-                            wallStories === option.value
-                              ? 'border-primary bg-primary/5'
-                              : 'border-border hover:border-primary/50'
-                          }`}
-                        >
-                          <div className="text-2xl mb-1">🏡</div>
-                          <div className="font-bold text-foreground">{option.label}</div>
-                          {wallStories === option.value && (
-                            <Check className="w-5 h-5 text-primary mx-auto mt-2" />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-8"
+                >
+                  <label className="block text-foreground font-medium mb-3">
+                    2. Talon kerrokset
+                  </label>
+                  <div className="grid grid-cols-3 gap-4">
+                    {[
+                      { value: '1', label: '1 kerros' },
+                      { value: '1.5', label: '1,5 kerrosta' },
+                      { value: '2', label: '2 kerrosta' },
+                    ].map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => setWallStories(option.value as WallStories)}
+                        className={`p-4 rounded-xl border-2 transition-all ${
+                          wallStories === option.value
+                            ? 'border-primary bg-primary/5'
+                            : 'border-border hover:border-primary/50'
+                        }`}
+                      >
+                        <div className="text-2xl mb-1">🏡</div>
+                        <div className="font-bold text-foreground">{option.label}</div>
+                        {wallStories === option.value && (
+                          <Check className="w-5 h-5 text-primary mx-auto mt-2" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
 
                 {/* Peeling */}
                 {wallStories && (
@@ -315,9 +362,9 @@ const PriceCalculator = () => {
                     </label>
                     <div className="grid grid-cols-3 gap-4">
                       {[
-                        { value: 'none', label: 'Ei lainkaan' },
+                        { value: 'none', label: 'Ei hilseilyä' },
                         { value: '1-2', label: '1-2 seinällä' },
-                        { value: '3-4', label: '3-4 seinällä' },
+                        { value: '3+', label: 'Yli 3 seinällä' },
                       ].map((option) => (
                         <button
                           key={option.value}
