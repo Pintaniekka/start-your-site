@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Droplets, Shield, Sparkles, Clock } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
-import puhdistusImage from "@/assets/puhdistus_ennen_jalkeen.png";
+import kattoImage from "@/assets/katto_harmaa.png";
 
 const KattopalvelutPuhdistus = () => {
   const features = [
@@ -14,12 +14,12 @@ const KattopalvelutPuhdistus = () => {
     {
       icon: Shield,
       title: "Sammaleentorjunta",
-      description: "Kattoa suojaava torjunta-aine estää sammalen ja jäkälän uudelleen kasvun.",
+      description: "Kattoa suojaava kasvustontorjunta-aine estää sammalen ja jäkälän uudelleen kasvun.",
     },
     {
       icon: Sparkles,
       title: "Katon tarkastus",
-      description: "Puhdistuksen yhteydessä tarkastamme katon kunnon ja raportoimme havainnot.",
+      description: "Puhdistuksen yhteydessä vaihdamme kaikki rikkinäiset tiilet ja lisätyönä harjatiivisteen asennus.",
     },
     {
       icon: Clock,
@@ -48,8 +48,8 @@ const KattopalvelutPuhdistus = () => {
     <div>
       <ServicePageHero
         title="Tiilikaton puhdistus"
-        subtitle="Ammattimainen mekaaninen puhdistus ja sammaleentorjunta – pidentää kattosi ikää huomattavasti"
-        backgroundImage={puhdistusImage}
+        subtitle="Ammattimainen mekaaninen puhdistus ja käsittely pidentää kattosi ikää huomattavasti"
+        backgroundImage={kattoImage}
       />
 
       {/* Seloste-osio */}
@@ -70,9 +70,9 @@ const KattopalvelutPuhdistus = () => {
                 säännöllisesti, jotta katto pysyy hyvässä kunnossa mahdollisimman pitkään.
               </p>
               <p>
-                <strong className="text-foreground">Emme käytä painepesuria</strong> tiilikaton puhdistuksessa, koska
-                painepesuri voi kuluttaa tiilen pintaa ja lyhentää katon käyttöikää. Sen sijaan puhdistamme katon
-                mekaanisesti käsityövälineillä, mikä säästää tiilen pintaa.
+                <strong className="text-foreground">Käytämme ammattitason välineitä.</strong> Katon puhdistuksessa
+                menetelmän valinta on erittäin tärkeää. Väärät menetelmät voivat vahingoittaa katon pintaa ja lyhentää
+                sen käyttöikää. Siksi puhdistamme katon mekaanisesti käsityövälineillä, mikä säästää tiilen pintaa.
               </p>
               <p>
                 Puhdistuksen jälkeen levitämme sammaleentorjunta-aineen, joka estää uuden kasvuston muodostumisen.
