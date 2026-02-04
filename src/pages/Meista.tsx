@@ -36,91 +36,7 @@ const Meista = () => {
         subtitle="Tutustu meihin – olemme pirkanmaalainen perheyritys, joka on erikoistunut tiilikattojen pinnoitukseen ja talojen maalaukseen"
       />
 
-      {/* Intro */}
-      <section className="section-padding bg-background">
-        <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Mikä ihmeen Pintanen?</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  Vaikka Pintanen on yrityksenä uusi, sen juuret ja osaaminen ulottuvat syvälle alan huipulle. Me tiedämme, mitä kestävä pinta vaatii. Olemme veljekset Eerik ja Eemil, ja Pintanen syntyi halusta tehdä asiat yksinkertaisesti paremmin ja reilummin.
-                </p>
-                <p>
-                  Kun yhdistimme voimamme, syntyi yritys, joka nimensä mukaisesti tuntee pintojen luonteen lattiasta kattoon (ja nimenomaan sinne kattoon saakka).
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {facts.map((fact, index) => (
-                <motion.div
-                  key={fact.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="card-elevated text-center"
-                >
-                  <div className="text-4xl font-bold text-primary mb-2">{fact.number}</div>
-                  <div className="text-sm text-muted-foreground">{fact.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Kaksi veljestä */}
-      <section className="section-padding bg-secondary">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Kaksi veljestä, kaksi erikoisalaa</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Meillä molemmilla on takanamme viiden vuoden tiivis kokemus alalta, mutta olemme erikoistuneet omiin vahvuuksiimme:
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="card-elevated bg-card"
-            >
-              <h3 className="text-xl font-bold text-foreground mb-3">Eerik</h3>
-              <p className="text-muted-foreground">
-                Eerik on elementissään korkeuksissa. Hänen heiniään ovat tiilikattojen pinnoitukset ja huollot, joilla jatketaan kodin tärkeimmän suojan ikää vuosikymmenillä.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="card-elevated bg-card"
-            >
-              <h3 className="text-xl font-bold text-foreground mb-3">Eemil</h3>
-              <p className="text-muted-foreground">
-                Eemil on erikoistunut seinien maalaukseen ja pintakäsittelyyn. Hän huolehtii siitä, että julkisivut ja sisäpinnat saavat kestävän ja silmiä hivelevän lopputuloksen.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Miksi valita meidät */}
+      {/* Mikä ihmeen Pintanen? */}
       <section className="section-padding bg-background">
         <div className="section-container">
           <motion.div
@@ -129,8 +45,55 @@ const Meista = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">Miksi valita meidät?</h2>
-            <div className="space-y-4 text-muted-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Mikä ihmeen Pintanen?</h2>
+            <div className="space-y-4 text-muted-foreground text-lg">
+              <p>
+                Vaikka Pintanen on yrityksenä uusi, sen juuret ja osaaminen ulottuvat syvälle alan huipulle. Me tiedämme, mitä kestävä pinta vaatii. Olemme veljekset Eerik ja Eemil, ja Pintanen syntyi halusta tehdä asiat yksinkertaisesti paremmin ja reilummin.
+              </p>
+              <p>
+                Kun yhdistimme voimamme, syntyi yritys, joka nimensä mukaisesti tuntee pintojen luonteen lattiasta kattoon (ja nimenomaan sinne kattoon saakka).
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Kaksi veljestä, kaksi erikoisalaa */}
+      <section className="section-padding bg-secondary">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Kaksi veljestä, kaksi erikoisalaa</h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Meillä molemmilla on takanamme viiden vuoden tiivis kokemus alalta, mutta olemme erikoistuneet omiin vahvuuksiimme:
+            </p>
+            <ul className="space-y-4 text-muted-foreground text-lg list-disc list-inside">
+              <li>
+                <strong className="text-foreground">Eerik</strong> on elementissään korkeuksissa. Hänen heiniään ovat tiilikattojen pinnoitukset ja huollot, joilla jatketaan kodin tärkeimmän suojan ikää vuosikymmenillä.
+              </li>
+              <li>
+                <strong className="text-foreground">Eemil</strong> on erikoistunut seinien maalaukseen ja pintakäsittelyyn. Hän huolehtii siitä, että julkisivut ja sisäpinnat saavat kestävän ja silmiä hivelevän lopputuloksen.
+              </li>
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Miksi valita meidät? */}
+      <section className="section-padding bg-background">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Miksi valita meidät?</h2>
+            <div className="space-y-4 text-muted-foreground text-lg">
               <p>
                 Pintanen perustettiin, jotta asiakkaat saavat laadukasta työtä ilman turhia lisäkuluja ja ammattilaiset voivat keskittyä siihen, minkä osaavat parhaiten.
               </p>
@@ -149,27 +112,51 @@ const Meista = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Leikkimökeistä taloyhtiöihin</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-6">
               Meille mikään kohde ei ole liian pieni tai liian suuri. Olemme nähneet ja hoitaneet kaikkea mahdollista:
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["Pienet piharakennukset ja leikkimökit", "Omakotitalot ja kesähuvilat", "Suuret taloyhtiöt"].map((item) => (
-                <span key={item} className="px-4 py-2 bg-card rounded-full text-foreground font-medium">
-                  {item}
-                </span>
-              ))}
-            </div>
-            <p className="text-muted-foreground mt-8">
+            <ul className="space-y-2 text-muted-foreground text-lg list-disc list-inside mb-6">
+              <li>Pienet piharakennukset ja leikkimökit</li>
+              <li>Omakotitalot ja kesähuvilat</li>
+              <li>Suuret taloyhtiöt</li>
+            </ul>
+            <p className="text-lg text-muted-foreground">
               Olipa kyseessä pienen pinnan ehostus tai suuren kiinteistön täysvaltainen huolto, Pintanen hoitaa homman kotiin – ammatilla, kunnialla ja sopivaan hintaan.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Values */}
+      {/* Fakta-numerot */}
+      <section className="section-padding bg-background">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+          >
+            {facts.map((fact, index) => (
+              <motion.div
+                key={fact.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="card-elevated text-center"
+              >
+                <div className="text-4xl font-bold text-primary mb-2">{fact.number}</div>
+                <div className="text-sm text-muted-foreground">{fact.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Arvot */}
       <section className="section-padding bg-secondary">
         <div className="section-container">
           <motion.div
@@ -184,7 +171,7 @@ const Meista = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -205,7 +192,7 @@ const Meista = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Miksi valita Pintanen -lista */}
       <section className="section-padding bg-background">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
@@ -248,7 +235,7 @@ const Meista = () => {
         </div>
       </section>
 
-      {/* Service Area */}
+      {/* Toiminta-alue */}
       <section className="section-padding bg-secondary">
         <div className="section-container">
           <motion.div
