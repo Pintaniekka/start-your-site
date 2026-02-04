@@ -25,7 +25,7 @@ const Meista = () => {
   const facts = [
     { number: "100+", label: "Tyytyväistä asiakasta" },
     { number: "5", label: "Vuotta kokemusta" },
-    { label: "Takuu töille" },
+    { number: "2-5", label: "vuotta takuuta" },
     { number: "100%", label: "Suosittelu" },
   ];
 
