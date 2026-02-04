@@ -25,7 +25,7 @@ const Meista = () => {
   const facts = [
     { number: "100+", label: "Tyytyväistä asiakasta" },
     { number: "5", label: "Vuotta kokemusta" },
-    { number: "2-5", label: "vuotta takuuta" },
+    { number: "2-5", label: "Vuotta takuuta" },
     { number: "100%", label: "Suosittelu" },
   ];
 
@@ -36,25 +36,18 @@ const Meista = () => {
         subtitle="Tutustu meihin – olemme pirkanmaalainen perheyritys, joka on erikoistunut tiilikattojen pinnoitukseen ja talojen maalaukseen"
       />
 
-      {/* Story */}
+      {/* Intro */}
       <section className="section-padding bg-background">
         <div className="section-container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Tarina Pintasen takana</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Mikä ihmeen Pintanen?</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Pintanen Oy syntyi halusta tehdä asiat kunnolla. Perustaja huomasi, että tiilikattojen pinnoitusalalla
-                  oli paljon toimijoita, mutta harva keskittyi todella laadukkaaseen lopputulokseen.
+                  Vaikka Pintanen on yrityksenä uusi, sen juuret ja osaaminen ulottuvat syvälle alan huipulle. Me tiedämme, mitä kestävä pinta vaatii. Olemme veljekset Eerik ja Eemil, ja Pintanen syntyi halusta tehdä asiat yksinkertaisesti paremmin ja reilummin.
                 </p>
                 <p>
-                  Olemme kasvaneet pienestä yrityksestä Pirkanmaan luotetuimmaksi kattopalveluiden tarjoajaksi. Meille
-                  jokainen projekti on yhtä tärkeä – oli kyseessä sitten pieni rivitalon katto tai suuri omakotitalon
-                  julkisivumaalaus.
-                </p>
-                <p>
-                  Uskomme, että huolellisesti tehty työ ja reilu asiakaspalvelu kantavat pitkälle. Siksi suurin osa
-                  asiakkaistamme tulee suositusten kautta.
+                  Kun yhdistimme voimamme, syntyi yritys, joka nimensä mukaisesti tuntee pintojen luonteen lattiasta kattoon (ja nimenomaan sinne kattoon saakka).
                 </p>
               </div>
             </motion.div>
@@ -80,6 +73,99 @@ const Meista = () => {
               ))}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Kaksi veljestä */}
+      <section className="section-padding bg-secondary">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Kaksi veljestä, kaksi erikoisalaa</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Meillä molemmilla on takanamme viiden vuoden tiivis kokemus alalta, mutta olemme erikoistuneet omiin vahvuuksiimme:
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="card-elevated bg-card"
+            >
+              <h3 className="text-xl font-bold text-foreground mb-3">Eerik</h3>
+              <p className="text-muted-foreground">
+                Eerik on elementissään korkeuksissa. Hänen heiniään ovat tiilikattojen pinnoitukset ja huollot, joilla jatketaan kodin tärkeimmän suojan ikää vuosikymmenillä.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="card-elevated bg-card"
+            >
+              <h3 className="text-xl font-bold text-foreground mb-3">Eemil</h3>
+              <p className="text-muted-foreground">
+                Eemil on erikoistunut seinien maalaukseen ja pintakäsittelyyn. Hän huolehtii siitä, että julkisivut ja sisäpinnat saavat kestävän ja silmiä hivelevän lopputuloksen.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Miksi valita meidät */}
+      <section className="section-padding bg-background">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">Miksi valita meidät?</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Pintanen perustettiin, jotta asiakkaat saavat laadukasta työtä ilman turhia lisäkuluja ja ammattilaiset voivat keskittyä siihen, minkä osaavat parhaiten.
+              </p>
+              <p>
+                Päätimme hypätä kilpailuun eri taktiikalla: Huomasimme, kuinka raskaat kulurakenteet ja byrokratia nostavat isojen maalausyritysten hintoja – ilman, että se välttämättä näkyy itse työn jäljessä. Me karsimme kaiken turhan. Teemme jokaisen askeleen kustannustehokkaasti ja itse, jolloin voimme tarjota asiakkaillemme parasta laatua edulliseen hintaan. Kun maksat Pintasen palvelusta, maksat ammattitaidosta ja laadukkaista materiaaleista, et ison organisaation hallintokuluista.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Leikkimökeistä taloyhtiöihin */}
+      <section className="section-padding bg-secondary">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Leikkimökeistä taloyhtiöihin</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Meille mikään kohde ei ole liian pieni tai liian suuri. Olemme nähneet ja hoitaneet kaikkea mahdollista:
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["Pienet piharakennukset ja leikkimökit", "Omakotitalot ja kesähuvilat", "Suuret taloyhtiöt"].map((item) => (
+                <span key={item} className="px-4 py-2 bg-card rounded-full text-foreground font-medium">
+                  {item}
+                </span>
+              ))}
+            </div>
+            <p className="text-muted-foreground mt-8">
+              Olipa kyseessä pienen pinnan ehostus tai suuren kiinteistön täysvaltainen huolto, Pintanen hoitaa homman kotiin – ammatilla, kunnialla ja sopivaan hintaan.
+            </p>
+          </motion.div>
         </div>
       </section>
 
