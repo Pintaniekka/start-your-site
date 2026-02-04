@@ -1,33 +1,32 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Check } from 'lucide-react';
-
 const Contact = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     phone: '',
     service: '',
-    message: '',
+    message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would normally send the form data
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 3000);
   };
-
-  return (
-    <section id="yhteystiedot" className="section-padding bg-primary">
+  return <section id="yhteystiedot" className="section-padding bg-primary">
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-12"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4 font-heading">
             Ota yhteyttä
           </h2>
@@ -38,12 +37,15 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          x: -30
+        }} whileInView={{
+          opacity: 1,
+          x: 0
+        }} viewport={{
+          once: true
+        }} className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-primary-foreground mb-6 font-heading">
                 Pintanen Oy
@@ -55,23 +57,17 @@ const Contact = () => {
             </div>
 
             <div className="space-y-4">
-              <a
-                href="tel:+358401234567"
-                className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10"
-              >
+              <a href="tel:+358401234567" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
                 <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
                   <div className="text-sm text-primary-foreground/60">Soita meille</div>
-                  <div className="font-bold text-primary-foreground text-xl">040 123 4567</div>
+                  <div className="font-bold text-primary-foreground text-xl">040 964 0066   </div>
                 </div>
               </a>
 
-              <a
-                href="mailto:info@pintanen.fi"
-                className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10"
-              >
+              <a href="mailto:info@pintanen.fi" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
                 <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6 text-accent" />
                 </div>
@@ -94,11 +90,15 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+          <motion.div initial={{
+          opacity: 0,
+          x: 30
+        }} whileInView={{
+          opacity: 1,
+          x: 0
+        }} viewport={{
+          once: true
+        }}>
             <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-8 shadow-lg">
               <h3 className="text-xl font-bold text-card-foreground mb-6 font-heading">
                 Pyydä tarjous
@@ -109,14 +109,10 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Nimi *
                   </label>
-                  <input
-                    type="text"
-                    required
-                    value={formState.name}
-                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Matti Meikäläinen"
-                  />
+                  <input type="text" required value={formState.name} onChange={e => setFormState({
+                  ...formState,
+                  name: e.target.value
+                })} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Matti Meikäläinen" />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
@@ -124,26 +120,19 @@ const Contact = () => {
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Sähköposti *
                     </label>
-                    <input
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="matti@esimerkki.fi"
-                    />
+                    <input type="email" required value={formState.email} onChange={e => setFormState({
+                    ...formState,
+                    email: e.target.value
+                  })} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="matti@esimerkki.fi" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Puhelin
                     </label>
-                    <input
-                      type="tel"
-                      value={formState.phone}
-                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="040 123 4567"
-                    />
+                    <input type="tel" value={formState.phone} onChange={e => setFormState({
+                    ...formState,
+                    phone: e.target.value
+                  })} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="040 123 4567" />
                   </div>
                 </div>
 
@@ -151,11 +140,10 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Palvelu
                   </label>
-                  <select
-                    value={formState.service}
-                    onChange={(e) => setFormState({ ...formState, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
+                  <select value={formState.service} onChange={e => setFormState({
+                  ...formState,
+                  service: e.target.value
+                })} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="">Valitse palvelu</option>
                     <option value="tiilikatto">Tiilikaton pinnoitus</option>
                     <option value="ulkomaalaus">Ulkomaalaus</option>
@@ -168,43 +156,26 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Viesti
                   </label>
-                  <textarea
-                    value={formState.message}
-                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                    placeholder="Kerro projektistasi..."
-                  />
+                  <textarea value={formState.message} onChange={e => setFormState({
+                  ...formState,
+                  message: e.target.value
+                })} rows={4} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" placeholder="Kerro projektistasi..." />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitted}
-                  className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${
-                    isSubmitted
-                      ? 'bg-green-500 text-white'
-                      : 'bg-accent text-accent-foreground hover:bg-accent/90'
-                  }`}
-                >
-                  {isSubmitted ? (
-                    <>
+                <button type="submit" disabled={isSubmitted} className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${isSubmitted ? 'bg-green-500 text-white' : 'bg-accent text-accent-foreground hover:bg-accent/90'}`}>
+                  {isSubmitted ? <>
                       <Check className="w-5 h-5" />
                       Lähetetty!
-                    </>
-                  ) : (
-                    <>
+                    </> : <>
                       <Send className="w-5 h-5" />
                       Lähetä tarjouspyyntö
-                    </>
-                  )}
+                    </>}
                 </button>
               </div>
             </form>
           </motion.div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
