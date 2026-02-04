@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import kattoEnnen from '@/assets/katto_ennen.png';
-import kattoJalkeen from '@/assets/katto_jalkeen.png';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import kattoEnnen from "@/assets/katto_ennen.png";
+import kattoJalkeen from "@/assets/katto_jalkeen.png";
 
 const BeforeAfter = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -9,9 +9,9 @@ const BeforeAfter = () => {
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    
+
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = 'touches' in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
+    const x = "touches" in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
   };
@@ -25,11 +25,9 @@ const BeforeAfter = () => {
           viewport={{ once: true }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">
-            Ennen & Jälkeen
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Ennen & Jälkeen</h2>
           <p className="text-muted-foreground text-lg">
-            Vedä liukusäädintä ja näe ero. Katot saavat uuden elämän ammattimaisella pinnoituksella.
+            Katso ero liukusäädintä vetämällä. Katot saavat uuden elämän ammattimaisella pinnoituksella.
           </p>
         </motion.div>
 
@@ -73,7 +71,7 @@ const BeforeAfter = () => {
             {/* Slider Handle */}
             <div
               className="absolute top-0 bottom-0 w-1 bg-primary-foreground shadow-lg"
-              style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+              style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
             >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary-foreground shadow-lg flex items-center justify-center">
                 <div className="flex gap-0.5">
