@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import logo from '@/assets/logo.png';
+
 const Footer = () => {
   return <footer className="bg-primary text-primary-foreground py-12">
       <div className="section-container">
@@ -16,10 +18,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-4">Palvelut</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
-              <li><a href="#palvelut" className="hover:text-primary-foreground transition-colors">Tiilikaton pinnoitus</a></li>
-              <li><a href="#palvelut" className="hover:text-primary-foreground transition-colors">Ulkomaalaus</a></li>
-              <li><a href="#palvelut" className="hover:text-primary-foreground transition-colors">Katon puhdistus</a></li>
-              <li><a href="#hintalaskuri" className="hover:text-primary-foreground transition-colors">Hintalaskuri</a></li>
+              <li><Link to="/kattopalvelut/pinnoitus" className="hover:text-primary-foreground transition-colors">Tiilikaton pinnoitus</Link></li>
+              <li><Link to="/talon-maalaus" className="hover:text-primary-foreground transition-colors">Ulkomaalaus</Link></li>
+              <li><Link to="/kattopalvelut/puhdistus" className="hover:text-primary-foreground transition-colors">Katon puhdistus</Link></li>
+              <li><Link to="/#hintalaskuri" className="hover:text-primary-foreground transition-colors">Hintalaskuri</Link></li>
             </ul>
           </div>
 

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check, MapPin, Award, Users, Target } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
+import pensselikuva from "@/assets/pensselikuva.png";
 
 const Meista = () => {
   const values = [
@@ -32,8 +33,9 @@ const Meista = () => {
   return (
     <div>
       <ServicePageHero
-        title="Mikä ihmeen Pintanen?"
+        title="Tutustu Pintaseen"
         subtitle="Tutustu meihin – olemme pirkanmaalainen perheyritys, joka on erikoistunut tiilikattojen pinnoitukseen ja talojen maalaukseen"
+        backgroundImage={pensselikuva}
       />
 
       {/* Mikä ihmeen Pintanen? */}
