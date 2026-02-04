@@ -5,7 +5,6 @@ import ServiceCTA from "@/components/ServiceCTA";
 import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
 import kattoImage from "@/assets/katto_1.png";
-import kiiltavaKatto from "@/assets/kiiltava_katto.jpeg";
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
     icon: Droplets,
@@ -30,11 +29,7 @@ const KattopalvelutPinnoitus = () => {
   }];
   const benefits = ["Jopa 15-20 vuotta lisäikää katolle", "Suojaa tiiliä rapautumiselta", "Estää sammalen ja jäkälän kasvun", "Parantaa kiinteistön ulkonäköä", "5 vuoden takuu työlle"];
   return <div>
-      <ServicePageHero 
-        title="Tiilikaton pinnoitus" 
-        subtitle={<em>"Eikö me sovittu, että se kiiltää?"</em>} 
-        backgroundImage={kiiltavaKatto} 
-      />
+      <ServicePageHero title="Tiilikaton pinnoitus" subtitle='"Eikö me sovittu, että se kiiltää?"' backgroundImage={kattoImage} />
 
       {/* Seloste-osio */}
       <section className="section-padding bg-background">
@@ -171,18 +166,7 @@ const KattopalvelutPinnoitus = () => {
       {/* Before/After */}
       <section className="section-padding bg-background">
         <div className="section-container">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Ennen ja jälkeen</h2>
-            
-          </motion.div>
+          
           <BeforeAfter />
         </div>
       </section>
