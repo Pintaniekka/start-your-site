@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Check, Droplets, Shield, Sparkles, Clock } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
-import kattoImage from "@/assets/katto_harmaa.png";
+import KotitalousVahennys from "@/components/KotitalousVahennys";
+import puhdistusImage from "@/assets/puhdistus_ennen_jalkeen.png";
 
 const KattopalvelutPuhdistus = () => {
   const features = [
@@ -37,19 +38,13 @@ const KattopalvelutPuhdistus = () => {
     "Ilmainen kuntotarkastus mukana",
   ];
 
-  const pricing = [
-    { size: "Alle 100 m²", price: "alkaen 800€" },
-    { size: "100-150 m²", price: "alkaen 1000€" },
-    { size: "150-200 m²", price: "alkaen 1400€" },
-    { size: "Yli 200 m²", price: "Kysy tarjous" },
-  ];
 
   return (
     <div>
       <ServicePageHero
         title="Tiilikaton puhdistus"
         subtitle="Ammattimainen mekaaninen puhdistus ja käsittely pidentää kattosi ikää huomattavasti"
-        backgroundImage={kattoImage}
+        backgroundImage={puhdistusImage}
       />
 
       {/* Seloste-osio */}
@@ -126,52 +121,39 @@ const KattopalvelutPuhdistus = () => {
       {/* Benefits & Pricing */}
       <section className="section-padding bg-secondary">
         <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Benefits */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl font-bold text-foreground mb-6">Puhdistuksen hyödyt</h2>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <motion.li
-                    key={benefit}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3"
-                  >
-                    <div className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-accent" />
-                    </div>
-                    <span className="text-foreground font-medium">{benefit}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+          {/* Benefits */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Puhdistuksen hyödyt</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-3 bg-card p-4 rounded-xl"
+                >
+                  <div className="w-6 h-6 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Check className="w-4 h-4 text-accent" />
+                  </div>
+                  <span className="text-foreground font-medium">{benefit}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-            {/* Pricing */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl font-bold text-foreground mb-6">Viitteelliset hinnat</h2>
-              <div className="space-y-4">
-                {pricing.map((item, index) => (
-                  <motion.div
-                    key={item.size}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex justify-between items-center p-4 bg-card rounded-xl"
-                  >
-                    <span className="text-foreground font-medium">{item.size}</span>
-                    <span className="text-primary font-bold text-lg">{item.price}</span>
-                  </motion.div>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground mt-4">
-                * Lopullinen hinta riippuu katon kunnosta ja sammalen määrästä. Pyydä ilmainen arvio!
+          {/* Pricing */}
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto">
+            <div className="bg-card rounded-2xl p-8 text-center shadow-lg">
+              <h2 className="text-2xl font-bold text-foreground mb-4">Hinnoittelu</h2>
+              <p className="text-muted-foreground mb-6">
+                Tiilikaton mekaanisen puhdistuksen ja käsittelyn hinta riippuu katon koosta ja sammaleen määrästä.
               </p>
-            </motion.div>
-          </div>
+              <div className="text-4xl font-bold text-primary mb-2">alkaen 800 €</div>
+              <p className="text-accent font-medium">Pyydä tarjous, niin kerromme tarkan hinnan!</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -204,6 +186,8 @@ const KattopalvelutPuhdistus = () => {
           </motion.div>
         </div>
       </section>
+
+      <KotitalousVahennys />
 
       <ServiceCTA />
     </div>

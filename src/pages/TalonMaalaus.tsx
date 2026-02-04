@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Check, Paintbrush, Shield, Clock, BadgeCheck, Home, Sun } from 'lucide-react';
 import ServicePageHero from '@/components/ServicePageHero';
 import ServiceCTA from '@/components/ServiceCTA';
+import KotitalousVahennys from '@/components/KotitalousVahennys';
 
 const TalonMaalaus = () => {
   const processSteps = [
@@ -190,6 +191,8 @@ const TalonMaalaus = () => {
           </div>
         </div>
       </section>
+
+      <KotitalousVahennys />
 
       <ServiceCTA />
     </div>

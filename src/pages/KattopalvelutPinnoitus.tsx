@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Droplets, Paintbrush, Shield, Clock, BadgeCheck } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
+import KotitalousVahennys from "@/components/KotitalousVahennys";
 import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
 import kattoImage from "@/assets/katto_1.png";
@@ -190,6 +191,8 @@ const KattopalvelutPinnoitus = () => {
           <PriceCalculator />
         </div>
       </section>
+
+      <KotitalousVahennys />
 
       <ServiceCTA />
     </div>
