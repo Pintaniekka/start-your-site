@@ -10,17 +10,17 @@ const TalonMaalaus = () => {
     {
       icon: Home,
       title: "Kunnon arviointi",
-      description: "Arvioimme talon pintojen kunnon ja tarvittavat esityöt.",
+      description: "Arvioimme talon pintojen kunnon ja annamme pitävän tarjouksen.",
     },
     {
       icon: Shield,
       title: "Pohjatyöt",
-      description: "Perusteellinen pesu, hionta ja tarvittavat paikkaukset.",
+      description: "Perusteellinen puhdistus, kaapiminen ja tarvittavat paikkaukset.",
     },
     {
       icon: Paintbrush,
       title: "Pohjamaalaus",
-      description: "Laadukas pohjamaalaus paljaisiin puupintoihin varmistaa pintamaalin tarttuvuuden.",
+      description: "Laadukas pohjamaalaus paljaisiin puuosiin varmistaa pintamaalin tarttuvuuden.",
     },
     {
       icon: Sun,
@@ -37,7 +37,7 @@ const TalonMaalaus = () => {
   const benefits = [
     "2 vuoden takuu työlle",
     "Ammattimaiset pohjatöt",
-    "Laadukaat Teknos-maalit",
+    "Laadukaat maalit",
     "Siisti ja huolellinen jälki",
     "Ilmainen arviointi",
     "Toiminta-alue: Pirkanmaa",
@@ -45,8 +45,6 @@ const TalonMaalaus = () => {
 
   const services = [
     { name: "Puutalon ulkomaalaus", description: "Lautaverhoilut, hirsi- ja paneelipinnat" },
-    { name: "Rappauksen maalaus", description: "Kivitalot ja rapatut pinnat" },
-    { name: "Ikkunat ja ovet", description: "Puuikkunoiden ja ovien kunnostus" },
     { name: "Kuistit ja terassit", description: "Terassien ja kuistien maalaus" },
   ];
 
