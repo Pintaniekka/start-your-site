@@ -57,23 +57,23 @@ const Contact = () => {
             </div>
 
             <div className="space-y-4">
-              <a href="tel:+358401234567" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
+              <a href="tel:+358409640066" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
                 <div className="w-14 h-14 rounded-xl bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6 text-accent-foreground" />
                 </div>
                 <div>
                   <div className="text-sm text-primary-foreground/60">Soita meille</div>
-                  <div className="font-bold text-primary-foreground text-xl">040 964 0066   </div>
+                  <div className="font-bold text-primary-foreground text-xl">040 964 0066</div>
                 </div>
               </a>
 
-              <a href="mailto:info@pintanen.fi" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
+              <a href="mailto:myynti@pintanen.fi" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
                 <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Mail className="w-6 h-6 text-accent" />
                 </div>
                 <div>
                   <div className="text-sm text-primary-foreground/60">Sähköposti</div>
-                  <div className="font-bold text-primary-foreground text-lg">info@pintanen.fi</div>
+                  <div className="font-bold text-primary-foreground text-lg">myynti@pintanen.fi</div>
                 </div>
               </a>
 

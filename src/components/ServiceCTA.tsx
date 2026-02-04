@@ -24,7 +24,7 @@ const ServiceCTA = ({
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">{subtitle}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+358401234567" className="btn-hero bg-accent text-accent-foreground">
+            <a href="tel:+358409640066" className="btn-hero bg-accent text-accent-foreground">
               <Phone className="w-5 h-5" />
               Soita: 040 964 0066
             </a>
