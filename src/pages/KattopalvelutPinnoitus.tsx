@@ -4,6 +4,7 @@ import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
+import KotitalousVahennys from "@/components/KotitalousVahennys";
 import kattoImage from "@/assets/kiiltava_katto_2.jpeg";
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
@@ -166,6 +167,8 @@ const KattopalvelutPinnoitus = () => {
           <PriceCalculator />
         </div>
       </section>
+
+      <KotitalousVahennys />
 
       <ServiceCTA />
     </div>;
