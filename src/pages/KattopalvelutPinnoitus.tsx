@@ -4,7 +4,7 @@ import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
-import kattoImage from "@/assets/katto_1.png";
+import kattoImage from "@/assets/kiiltava_katto_2.jpeg";
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
     icon: Droplets,
@@ -123,7 +123,7 @@ const KattopalvelutPinnoitus = () => {
           }} viewport={{
             once: true
           }}>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Miksi pinnoittaa tiilikatolla?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Miksi pinnoittaa tiilikatto?</h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Tiilikaton pinnoitus on edullisin tapa pidentää katon käyttöikää merkittävästi verrattuna täydelliseen
                 katon uusimiseen.
@@ -148,17 +148,6 @@ const KattopalvelutPinnoitus = () => {
               </ul>
             </motion.div>
 
-            <motion.div initial={{
-            opacity: 0,
-            x: 30
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }}>
-              <img src={kattoImage} alt="Pinnoitettu tiilikatolla" className="rounded-2xl shadow-xl" />
-            </motion.div>
           </div>
         </div>
       </section>
@@ -174,18 +163,6 @@ const KattopalvelutPinnoitus = () => {
       {/* Price Calculator */}
       <section id="hintalaskuri" className="section-padding bg-secondary">
         <div className="section-container">
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Laske hinta-arvio</h2>
-            <p className="text-lg text-muted-foreground">Syötä kattosi tiedot ja saat alustavan hinta-arvion</p>
-          </motion.div>
           <PriceCalculator />
         </div>
       </section>
