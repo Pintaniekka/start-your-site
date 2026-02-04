@@ -5,6 +5,7 @@ import BeforeAfter from '@/components/BeforeAfter';
 import PriceCalculator from '@/components/PriceCalculator';
 import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
+import KotitalousVahennys from '@/components/KotitalousVahennys';
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <PriceCalculator />
       <Gallery />
       <Contact />
+      <KotitalousVahennys />
     </>
   );
 };
