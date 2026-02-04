@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, Droplets, Shield, Sparkles, Clock } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
-import kattoImage from "@/assets/katto_harmaa.png";
+import puhdistusImage from "@/assets/puhdistus_ennen_jalkeen.png";
 
 const KattopalvelutPuhdistus = () => {
   const features = [
@@ -49,7 +49,7 @@ const KattopalvelutPuhdistus = () => {
       <ServicePageHero
         title="Tiilikaton puhdistus"
         subtitle="Ammattimainen mekaaninen puhdistus ja sammaleentorjunta – pidentää kattosi ikää huomattavasti"
-        backgroundImage={kattoImage}
+        backgroundImage={puhdistusImage}
       />
 
       {/* Seloste-osio */}
