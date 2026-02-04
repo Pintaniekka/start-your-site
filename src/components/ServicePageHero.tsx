@@ -17,7 +17,7 @@ const ServicePageHero = ({ title, subtitle, backgroundImage, children }: Service
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary-dark/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 to-primary-dark/80" />
         </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark" />
