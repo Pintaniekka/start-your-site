@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 interface ServicePageHeroProps {
   title: string;
-  subtitle: string;
+  subtitle: string | ReactNode;
   backgroundImage?: string;
   children?: ReactNode;
 }
@@ -17,7 +17,7 @@ const ServicePageHero = ({ title, subtitle, backgroundImage, children }: Service
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 to-primary-dark/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/50 to-primary-dark/60" />
         </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-dark" />

@@ -5,6 +5,7 @@ import ServiceCTA from "@/components/ServiceCTA";
 import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
 import kattoImage from "@/assets/katto_1.png";
+import kiiltavaKatto from "@/assets/kiiltava_katto.jpeg";
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
     icon: Droplets,
@@ -29,7 +30,11 @@ const KattopalvelutPinnoitus = () => {
   }];
   const benefits = ["Jopa 15-20 vuotta lisäikää katolle", "Suojaa tiiliä rapautumiselta", "Estää sammalen ja jäkälän kasvun", "Parantaa kiinteistön ulkonäköä", "5 vuoden takuu työlle"];
   return <div>
-      <ServicePageHero title="Tiilikaton pinnoitus" subtitle='"Eikö me sovittu, että se kiiltää?"' backgroundImage={kattoImage} />
+      <ServicePageHero 
+        title="Tiilikaton pinnoitus" 
+        subtitle={<em>"Eikö me sovittu, että se kiiltää?"</em>} 
+        backgroundImage={kiiltavaKatto} 
+      />
 
       {/* Seloste-osio */}
       <section className="section-padding bg-background">
