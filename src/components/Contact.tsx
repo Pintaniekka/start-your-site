@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Send, Check } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, Check, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/hooks/use-toast';
+
 const Contact = () => {
   const [formState, setFormState] = useState({
     name: '',
@@ -10,11 +13,31 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally send the form data
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    if (isLoading) return;
+
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formState,
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      setIsSubmitted(true);
+      setFormState({ name: '', email: '', phone: '', service: '', message: '' });
+      toast({ title: 'Tarjouspyyntö lähetetty!', description: 'Vastaamme mahdollisimman pian.' });
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err: unknown) {
+      console.error('Form submission error:', err);
+      toast({ title: 'Virhe lähetyksessä', description: 'Yritä uudelleen tai soita meille.', variant: 'destructive' });
+    } finally {
+      setIsLoading(false);
+    }
   };
   return <section id="yhteystiedot" className="section-padding bg-primary">
       <div className="section-container">
@@ -162,10 +185,13 @@ const Contact = () => {
                 })} rows={4} className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" placeholder="Kerro projektistasi..." />
                 </div>
 
-                <button type="submit" disabled={isSubmitted} className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${isSubmitted ? 'bg-green-500 text-white' : 'bg-accent text-accent-foreground hover:bg-accent/90'}`}>
+                <button type="submit" disabled={isSubmitted || isLoading} className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition-all ${isSubmitted ? 'bg-green-500 text-white' : 'bg-accent text-accent-foreground hover:bg-accent/90'}`}>
                   {isSubmitted ? <>
                       <Check className="w-5 h-5" />
                       Lähetetty!
+                    </> : isLoading ? <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Lähetetään...
                     </> : <>
                       <Send className="w-5 h-5" />
                       Lähetä tarjouspyyntö
