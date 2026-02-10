@@ -1,40 +1,50 @@
 
 
-## Ulkomaalaus-hintalaskurin päivitys
+## Tarjouslomakkeen sähköpostilähetyksen toteutus
 
-Päivitän ulkomaalaus-laskurin käyttämään uutta hinnoittelulogiikkaa päivitetyillä arvoilla.
+Tällä hetkellä lomake ei lähetä mitään -- se vain näyttää "Lähetetty!" ilman, että tiedot menevät minnekään. Korjataan tämä niin, että lomakkeen tiedot lähetetään oikeana sähköpostina osoitteeseen **myynti@pintanen.fi**.
 
-### Muutokset edelliseen suunnitelmaan
+### Mitä tarvitaan
 
-- **Kilpailukerroin**: 0.8 → **0.9** (10% alennus alkuperäisistä hinnoista)
-- **Liukusäätimen väli**: 50-400 → **50-350 m²**
+1. **Lovable Cloud -yhteys** -- tarvitaan edge functionin ajamiseen (aktivoidaan projektin asetuksista)
+2. **Resend-tili** -- sähköpostin lähettämiseen
+   - Luo tili osoitteessa [resend.com](https://resend.com)
+   - Vahvista domain osoitteessa [resend.com/domains](https://resend.com/domains) (esim. pintanen.fi)
+   - Luo API-avain osoitteessa [resend.com/api-keys](https://resend.com/api-keys)
+3. **RESEND_API_KEY** -- tallennetaan Lovable-projektiin salaisuutena
 
-### Toteutus
+### Tekniset muutokset
 
-**1. Syötekentät**
-- **Talon pohjapinta-ala**: Liukusäädin + numerokenttä (50-350 m²)
-- **Kerrosten lukumäärä**: "1", "1,5" tai "2"
-- **Hilseilyn määrä**: "Ei hilseilyä", "1-2 seinällä", "Yli 3 seinällä"
+**1. Edge function: `supabase/functions/send-contact-email/index.ts`**
+- Vastaanottaa lomakkeen tiedot (nimi, sähköposti, puhelin, palvelu, viesti)
+- Validoi syötteet
+- Lähettää sähköpostin Resendin kautta osoitteeseen myynti@pintanen.fi
+- Palauttaa onnistumis-/virhetilan
 
-**2. Hinnoittelulogiikka**
+**2. `supabase/config.toml`**
+- Lisätään edge function -konfiguraatio (`verify_jwt = false`, koska lomake on julkinen)
 
-Laskennan perusteet:
-- Perushinta interpoloidaan neliöpisteiden välillä (100m²: ~4230€, 200m²: ~6000€, 300m²: ~7800€)
-- Kerroskerroin: 1 krs = 1.0, 1.5 krs = 1.225, 2 krs = 1.475
-- Hilseilykerroin: Ei hilseilyä = 1.0, 1-2 seinää = 1.15, Yli 3 seinää = 1.275
-- **Kilpailukerroin 0.9** laskee lopullista hintaa 10%
+**3. `src/integrations/supabase/client.ts`** (tai vastaava)
+- Supabase-clientin alustus, jotta edge functionia voidaan kutsua
 
-**3. UI-parannukset**
-- Liukusäädin pinta-alalle (50-350 m²)
-- Numeroarvo näytetään liukusäätimen vieressä
-- Selkeät valintapainikkeet kerroksille ja hilseilylle
-- Hinta näytetään haarukkana (±10% keskiarvosta)
+**4. `src/components/Contact.tsx`**
+- Päivitetään `handleSubmit` kutsumaan edge functionia
+- Lisätään virheenkäsittely ja latausanimaatio
+- Syötteiden validointi ennen lähetystä
+- Näytetään käyttäjälle selkeä palaute onnistumisesta tai virheestä
 
----
+### Vaiheet
 
-### Tekninen toteutus
+| Vaihe | Toimenpide |
+|-------|-----------|
+| 1 | Aktivoidaan Lovable Cloud |
+| 2 | Pyydetään RESEND_API_KEY (käyttäjä lisää) |
+| 3 | Luodaan edge function `send-contact-email` |
+| 4 | Päivitetään `Contact.tsx` kutsumaan edge functionia |
+| 5 | Testataan lomake |
 
-| Tiedosto | Muutos |
-|----------|--------|
-| `src/components/PriceCalculator.tsx` | Päivitetään ulkomaalaus-laskurin logiikka ja UI |
+### Huomioita
 
+- Domain (pintanen.fi) pitää olla vahvistettu Resendissä, jotta sähköpostit menevät perille
+- Edge function on julkinen (ei JWT-tarkistusta), koska kuka tahansa voi lähettää tarjouspyynnön
+- Lisätään yksinkertainen rate limiting -logiikka lomakkeeseen (nappi disabloituu lähetyksen ajaksi)
