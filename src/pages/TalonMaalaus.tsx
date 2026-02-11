@@ -4,7 +4,7 @@ import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
 import { getStorageUrl } from "@/lib/storage";
-const heroImage = getStorageUrl("Paallekkain_synkronoidut_kuvat/Sininen maalattu talo ennen ja jalkeen.jpg");
+const heroImage = getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Harmaa seina varinvaihdon jalkeen.jpg");
 
 const TalonMaalaus = () => {
   const processSteps = [

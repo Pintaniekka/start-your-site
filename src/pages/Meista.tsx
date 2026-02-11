@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Check, MapPin, Award, Users, Target } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
-import pensselikuva from "@/assets/pensselikuva.png";
+import { getStorageUrl } from "@/lib/storage";
+const pensselikuva = getStorageUrl("pensselikuva.jpg");
 
 const Meista = () => {
   const values = [
