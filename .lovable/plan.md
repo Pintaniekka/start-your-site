@@ -1,50 +1,92 @@
 
 
-## Tarjouslomakkeen sähköpostilähetyksen toteutus
+# Kuvien korvaaminen Storage-kuvilla
 
-Tällä hetkellä lomake ei lähetä mitään -- se vain näyttää "Lähetetty!" ilman, että tiedot menevät minnekään. Korjataan tämä niin, että lomakkeen tiedot lähetetään oikeana sähköpostina osoitteeseen **myynti@pintanen.fi**.
+## Yhteenveto
 
-### Mitä tarvitaan
+Korvataan kaikki paikalliset kuvat (src/assets/) Lovable Cloud Storage -kuvilla. Galleria ja referenssisivu rakennetaan uudelleen storage-kuvien pohjalta. Bucket tehdaan julkiseksi, jotta kuvat nayttyvat sivustolla.
 
-1. **Lovable Cloud -yhteys** -- tarvitaan edge functionin ajamiseen (aktivoidaan projektin asetuksista)
-2. **Resend-tili** -- sähköpostin lähettämiseen
-   - Luo tili osoitteessa [resend.com](https://resend.com)
-   - Vahvista domain osoitteessa [resend.com/domains](https://resend.com/domains) (esim. pintanen.fi)
-   - Luo API-avain osoitteessa [resend.com/api-keys](https://resend.com/api-keys)
-3. **RESEND_API_KEY** -- tallennetaan Lovable-projektiin salaisuutena
+## Vaihe 1: Tee storage-ampari julkiseksi
 
-### Tekniset muutokset
+SQL-migraatio joka:
+- Muuttaa `images`-amparin julkiseksi (`UPDATE storage.buckets SET public = true WHERE id = 'images'`)
+- Lisaa SELECT-kaytannon RLS-politiikan, jotta kuvat voidaan lukea
 
-**1. Edge function: `supabase/functions/send-contact-email/index.ts`**
-- Vastaanottaa lomakkeen tiedot (nimi, sähköposti, puhelin, palvelu, viesti)
-- Validoi syötteet
-- Lähettää sähköpostin Resendin kautta osoitteeseen myynti@pintanen.fi
-- Palauttaa onnistumis-/virhetilan
+## Vaihe 2: Luo apufunktio storage-URL:ien generointiin
 
-**2. `supabase/config.toml`**
-- Lisätään edge function -konfiguraatio (`verify_jwt = false`, koska lomake on julkinen)
+Luodaan tiedosto `src/lib/storage.ts` joka sisaltaa:
 
-**3. `src/integrations/supabase/client.ts`** (tai vastaava)
-- Supabase-clientin alustus, jotta edge functionia voidaan kutsua
+```text
+getStorageUrl(path: string) -> string
+```
 
-**4. `src/components/Contact.tsx`**
-- Päivitetään `handleSubmit` kutsumaan edge functionia
-- Lisätään virheenkäsittely ja latausanimaatio
-- Syötteiden validointi ennen lähetystä
-- Näytetään käyttäjälle selkeä palaute onnistumisesta tai virheestä
+Palauttaa julkisen URL:n muodossa:
+`{SUPABASE_URL}/storage/v1/object/public/images/{path}`
 
-### Vaiheet
+## Vaihe 3: Paivita BeforeAfter-komponentti
 
-| Vaihe | Toimenpide |
-|-------|-----------|
-| 1 | Aktivoidaan Lovable Cloud |
-| 2 | Pyydetään RESEND_API_KEY (käyttäjä lisää) |
-| 3 | Luodaan edge function `send-contact-email` |
-| 4 | Päivitetään `Contact.tsx` kutsumaan edge functionia |
-| 5 | Testataan lomake |
+Korvataan paikalliset kuvat `katto_ennen.png` ja `katto_jalkeen.png` storage-kuvilla:
+- **Ennen**: `Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kulunut katto ennen maalauspinnoitusta.jpg`
+- **Jalkeen**: `Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen katto maalauspinnoituksen jalkeen.jpg`
 
-### Huomioita
+## Vaihe 4: Paivita Gallery-komponentti
 
-- Domain (pintanen.fi) pitää olla vahvistettu Resendissä, jotta sähköpostit menevät perille
-- Edge function on julkinen (ei JWT-tarkistusta), koska kuka tahansa voi lähettää tarjouspyynnön
-- Lisätään yksinkertainen rate limiting -logiikka lomakkeeseen (nappi disabloituu lähetyksen ajaksi)
+Korvataan kaikki 5 paikallista kuvaa storage-kuvilla kayttaen Muut_referenssit-kansion kuvia:
+- Maalattu katto valmis tiilen punainen.jpg
+- Maalattu katto valmis harmaa.jpg
+- Maalattu katto valmis ruskea.jpg
+- kattoprojekti, jossa puolet katosta pesty.jpg
+- Kiiltava valmis maalattu katto.jpg
+
+## Vaihe 5: Rakenna Referenssit-sivu uudelleen
+
+Korvataan kaikki paikalliset kuvaviittaukset. Ryhmitellyt projektit rakennetaan storage-kuvista:
+
+**Kattoprojektit (pinnoitus):**
+- Projekti 1: Punainen kulunut katto ennen -> Punainen katto pinnoituksen jalkeen
+- Projekti 2: Punainen likainen katto ennen -> Punainen kiiltava katto pinnoituksen jalkeen
+
+**Katon puhdistus:**
+- Projekti: Katto ennen mekaanista puhdistusta -> Katto mekaanisen puhdistuksen jalkeen
+
+**Talon maalaus:**
+- Keltainen seina: ennen -> jalkeen
+- Sininen talo: ennen -> jalkeen
+- Punainen seina: ennen -> varinvaihdon jalkeen (Harmaa seina)
+
+**Yksittaiset:**
+- Maalattu katto valmis tiilen punainen, harmaa, ruskea
+- katto vanha ja uusi vierekkain
+- Valmis seina maalattu
+- suojaus 1 ja 2
+
+## Vaihe 6: Paivita palvelusivujen hero-kuvat
+
+- **KattopalvelutPinnoitus**: `kiiltava_katto_2.jpeg` -> `Muut_referenssit/Kiiltava valmis maalattu katto.jpg`
+- **KattopalvelutPuhdistus**: `puhdistus_ennen_jalkeen.png` -> `Paallekkain.../Punainen maalattu katto ennen ja jalkeen.jpg`
+- **TalonMaalaus**: `seina_ennen_jalkeen_hero.png` -> `Paallekkain.../Sininen maalattu talo ennen ja jalkeen.jpg`
+- **Meista**: `pensselikuva.png` -> sailytetaan paikallisena (ei storage-vastinetta)
+
+## Vaihe 7: Hero-video
+
+`Taustavideo.mp4` sailytetaan paikallisena koska sita ei ole storage-amparissa.
+
+## Tiedostot joita muokataan
+
+| Tiedosto | Muutos |
+|---|---|
+| SQL-migraatio | Bucket julkiseksi + RLS |
+| `src/lib/storage.ts` | Uusi apufunktio |
+| `src/components/BeforeAfter.tsx` | Storage-URL:t |
+| `src/components/Gallery.tsx` | Storage-URL:t |
+| `src/pages/Referenssit.tsx` | Taysin uudet kuvat storagesta |
+| `src/pages/KattopalvelutPinnoitus.tsx` | Hero-kuva storagesta |
+| `src/pages/KattopalvelutPuhdistus.tsx` | Hero-kuva storagesta |
+| `src/pages/TalonMaalaus.tsx` | Hero-kuva storagesta |
+
+## Huomioitavaa
+
+- Logo (`logo.png`), pensselikuva ja video sailyvat paikallisina
+- Vanhat asset-tiedostot voidaan poistaa myohemmin kun kaikki toimii
+- Storage-URL:t sisaltavat valilyonteja tiedostonimissa, joten ne taytyy URL-enkoodata (encodeURIComponent)
+
