@@ -1,111 +1,69 @@
 
+# Korjaussuunnitelma: Referenssit-kuvat, hero-kuvat, favicon, navigaatio ja mobiili-blur
 
-# Palvelumme-osion uudistus: Ennen/Jalkeen-liukusaatimet palvelukortteihin
+## 1. Referenssit-sivun rikkinaiset kuvat
 
-## Yhteenveto
+Ongelma: Osa kuvien tiedostonimista koodissa ei vastaa Storagessa olevia nimia. Tama aiheuttaa 404-virheita, jotka selain blokkaa (ERR_BLOCKED_BY_ORB).
 
-Korvataan nykyisten palvelukorttien ikonikuvat kompakteilla ennen/jalkeen-liukusaatimilla. Jokainen kortti saa oman interaktiivisen kuvavertailun "tuotekuvaksi". Samalla poistetaan erillinen BeforeAfter-osio etusivulta, koska sen toiminnallisuus siirtyy suoraan palvelukortteihin.
+Korjattavat tiedostonimet `Referenssit.tsx`:ssa:
 
-## Muutokset
+| Koodissa nyt | Storagessa oikeasti |
+|---|---|
+| `Samaan_.../Katto ennen mekaanista puhdistusta.jpg` | `Muut_referenssit/Katto ennen mekaanista puhdistusta.jpg` |
+| `Samaan_.../Katto mekaanisen puhdistuksen jalkeen.jpg` | `Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.jpg` |
+| `Samaan_.../Punainen kiiltava katto maalauspinnoituksen jalkeen.jpg` | `Samaan_.../Punainen kiiltava katto maalaukspinnoituksen jalkeen.jpg` |
+| `Samaan_.../Sininen talo maalauksen jalkeen.jpg` | `Samaan_.../sininen talo maalauksen jalkeen.jpg` (pieni s) |
+| `Samaan_.../Punainen seina ennen varinvaihtoa.jpg` | `Samaan_.../Punainen seina ennen maalausta varinvaihdos.jpg` |
+| `Samaan_.../Harmaa seina varinvaihdon jalkeen.jpg` | `Samaan_.../Harmaa seina varinvaihdon jalkeen.jpg` (OK) |
 
-### 1. Uusi komponentti: `BeforeAfterSlider`
+Korjaus: Paivitetaan polut vastaamaan Storagessa olevia oikeita nimia.
 
-Luodaan uudelleenkaytettava `src/components/BeforeAfterSlider.tsx`, joka kapseloi liukusaatimen logiikan (sama tekniikka kuin nykyisessa `BeforeAfter.tsx`). Props:
-- `beforeImage: string` -- ennen-kuvan URL
-- `afterImage: string` -- jalkeen-kuvan URL
-- `aspectRatio?: string` -- oletuksena `"4/3"`
+## 2. Hero-kuvien paivitys
 
-Komponentti on kompakti: pyoristetyt kulmat (`rounded-xl`), "Ennen"/"Jalkeen"-labelit, vetokahva. Ei omaa otsikkoa tai taustaosioita -- pelkka kuvavertailu.
+Sivukohtaiset hero-kuvat paivitetaan Storagen kuvilla:
 
-### 2. Kuvien lataus Supabase Storageen
+| Sivu | Nykyinen kuva | Uusi kuva (Storagesta) |
+|---|---|---|
+| Meista (Tutustu Pintaseen) | `@/assets/pensselikuva.png` (lokaali) | `pensselikuva.jpg` (Storage juuressa) |
+| Tiilikaton puhdistus | `Paallekkain_.../Punainen maalattu katto ennen ja jalkeen.jpg` | `Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.jpg` |
+| Talon maalaus | `Paallekkain_.../Sininen maalattu talo ennen ja jalkeen.jpg` | `Samaan_.../Harmaa seina varinvaihdon jalkeen.jpg` |
+| Referenssit | Ei hero-kuvaa (vain gradient) | `Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.jpg` |
 
-Ladataan kayttajan antamat 4 kuvaa Supabase Storagen `images`-ampariin ja kaytetaan `getStorageUrl()`-funktiota URL:ien luontiin. Kuvien polut:
+Muutettavat tiedostot:
+- `src/pages/Meista.tsx` -- vaihdetaan import getStorageUrl-kutsuun
+- `src/pages/KattopalvelutPuhdistus.tsx` -- vaihdetaan hero-kuvan polku
+- `src/pages/TalonMaalaus.tsx` -- vaihdetaan hero-kuvan polku
+- `src/pages/Referenssit.tsx` -- lisataan backgroundImage-prop ServicePageHeroon
 
-- `Palvelukortit/Punainen_katto_ennen.jpg`
-- `Palvelukortit/Punainen_katto_jalkeen.jpg`
-- `Palvelukortit/Keltainen_seina_ennen.jpg`
-- `Palvelukortit/Keltainen_seina_jalkeen.jpg`
+## 3. Favicon-paivitys
 
-### 3. Paivitetaan `Services.tsx`
+Storagessa on `Uusi favicon.svg` ja `Uusi favicon.png`. Suunnitelma:
+- Ladataan molemmat tiedostot ja kopioidaan `public/`-kansioon nimilla `favicon.svg` ja `favicon.png`
+- Paivitetaan `index.html` kayttamaan uutta SVG-faviconia ja PNG-varavaihtoehtona
+- Kaytetaan isoa kokoa (laidasta laitaan)
 
-- Poistetaan ikoni-elementti korttien ylaosasta
-- Lisataan `BeforeAfterSlider` korttien ylaosaan ennen otsikkoa
-- Palveludata saa uudet kentat `beforeImage` ja `afterImage` ikonin tilalle
-- Kortin rakenne: Slider -> Otsikko -> Kuvaus -> Ominaisuuslista -> Takuu + "Laske hinta"
+## 4. Navigaation yhtenaisyys
 
-### 4. Poistetaan `BeforeAfter`-osio etusivulta
+Nykyinen tilanne: Header-komponentti on jo jaettu `Layout.tsx`n kautta kaikille sivuille. Navigaatio nakyy samanlaisena joka sivulla. Mahdollinen ongelma on, etta taustavari vaihtuu vain etusivulla (isHomePage-ehto). Korjaus: Poistetaan transparentti tausta kokonaan -- navigaatio on aina `bg-primary/95 backdrop-blur-md`.
 
-Koska ennen/jalkeen-vertailu siirtyy palvelukortteihin, erillinen `BeforeAfter`-komponentti poistetaan `Index.tsx`:sta. Itse `BeforeAfter.tsx`-tiedosto sailytetaan mahdollista myohempaa kayttoa varten.
+Muutettava tiedosto: `src/components/Header.tsx`
 
-## Muutettavat tiedostot
+## 5. Mobiili-haivytys -> blur
+
+Nykyisessa CSS:ssa ei ole eksplisiittista valkoista haivytysta. Todennakoisesti ongelma tulee hero-osion gradient-overlaysta tai scroll-indikaattorista. Tarkistetaan Hero-komponentti ja lisataan `backdrop-filter: blur()` valkoisen gradientin tilalle, tai muokataan hero-gradient CSS-muuttujaa mobiilissa.
+
+Koska hero-gradient on jo maaritelty `index.css`:ssa eika kayta valkoista, ongelma saattaa liittya ServicePageHero-komponenttien gradient-overlayhin tai body-taustan nakymiseen. Lisaan mobiililla blurrin hero-osioiden alaosaan valkoisen haivytyksen tilalle.
+
+## Muutettavat tiedostot yhteenveto
 
 | Tiedosto | Muutos |
 |---|---|
-| `src/components/BeforeAfterSlider.tsx` | Uusi komponentti -- kompakti ennen/jalkeen-liukusaadin |
-| `src/components/Services.tsx` | Korvataan ikonit liukusaatimilla, paivitetaan palveludata |
-| `src/pages/Index.tsx` | Poistetaan `BeforeAfter`-osion kayto |
-
-## Tekninen toteutus
-
-### BeforeAfterSlider-komponentti
-
-```text
-Props:
-  beforeImage: string
-  afterImage: string
-  aspectRatio?: string (default "4/3")
-
-Rakenne:
-  <div className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-ew-resize">
-    <img after (taustalla) />
-    <div clipPath before (leikattu) />
-    <div slider-kahva />
-    <span "Ennen" label />
-    <span "Jalkeen" label />
-  </div>
-```
-
-Pienempi kahva (w-10 h-10) ja pienennot labelit kortin mittakaavaan sopiviksi.
-
-### Services.tsx palveludata
-
-```text
-services = [
-  {
-    title: "Tiilikaton pinnoitus",
-    beforeImage: getStorageUrl("Palvelukortit/Punainen_katto_ennen.jpg"),
-    afterImage: getStorageUrl("Palvelukortit/Punainen_katto_jalkeen.jpg"),
-    description: "Vanha tiilikatto uuteen loistoon...",
-    features: ["Sammaleenpuhdistus", "Suojakasittely", "Pinnoitus"],
-    warranty: "5v takuu"
-  },
-  {
-    title: "Ulkomaalaus",
-    beforeImage: getStorageUrl("Palvelukortit/Keltainen_seina_ennen.jpg"),
-    afterImage: getStorageUrl("Palvelukortit/Keltainen_seina_jalkeen.jpg"),
-    description: "Huolelliset pohjatyot ja laadukas maalipinta...",
-    features: ["Pohjatyot", "Laadukkaat maalit", "Siisti tyonjälki"],
-    warranty: "2v takuu"
-  }
-]
-```
-
-### Kortin ulkoasu
-
-```text
-+-------------------------------+
-|  [  Ennen / Jalkeen slider  ] |  <-- rounded-xl, aspect-4/3
-|-------------------------------|
-|  Tiilikaton pinnoitus         |
-|  Vanha tiilikatto uuteen...   |
-|                               |
-|  v Sammaleenpuhdistus         |
-|  v Suojakasittely             |
-|  v Pinnoitus                  |
-|                               |
-|  [5v takuu]    Laske hinta -> |
-+-------------------------------+
-```
-
-Katon puhdistus -banneri ja tyovaiheet-osio sailyvat ennallaan korttien alapuolella.
-
+| `src/pages/Referenssit.tsx` | Korjataan kuvapolut + lisataan hero-kuva |
+| `src/pages/Meista.tsx` | Vaihdetaan hero-kuva Storageen |
+| `src/pages/KattopalvelutPuhdistus.tsx` | Vaihdetaan hero-kuva |
+| `src/pages/TalonMaalaus.tsx` | Vaihdetaan hero-kuva |
+| `src/components/Header.tsx` | Poistetaan transparentti tila, aina kiintea tausta |
+| `index.html` | Paivitetaan favicon-viittaukset |
+| `public/favicon.svg` | Uusi favicon (Storagesta) |
+| `public/favicon.png` | Uusi favicon PNG (Storagesta) |
+| `src/components/Hero.tsx` tai `src/index.css` | Mobiili-blur-korjaus |
