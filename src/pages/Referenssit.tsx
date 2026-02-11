@@ -153,7 +153,7 @@ const Referenssit = () => {
       category: 'pinnoitus',
       images: [
         { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen likainen katto ennen maalauspinnoitusta.jpg'), label: 'Ennen' },
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kiiltava katto maalauspinnoituksen jalkeen.jpg'), label: 'Pinnoitettuna' },
+        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kiiltava katto maalaukspinnoituksen jalkeen.jpg'), label: 'Pinnoitettuna' },
       ],
     },
     {
@@ -161,8 +161,8 @@ const Referenssit = () => {
       title: 'Tiilikaton puhdistus',
       category: 'puhdistus',
       images: [
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Katto ennen mekaanista puhdistusta.jpg'), label: 'Ennen puhdistusta' },
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Katto mekaanisen puhdistuksen jalkeen.jpg'), label: 'Puhdistuksen jälkeen' },
+        { src: getStorageUrl('Muut_referenssit/Katto ennen mekaanista puhdistusta.jpg'), label: 'Ennen puhdistusta' },
+        { src: getStorageUrl('Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.jpg'), label: 'Puhdistuksen jälkeen' },
       ],
     },
     {
@@ -180,7 +180,7 @@ const Referenssit = () => {
       category: 'maalaus',
       images: [
         { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Sininen talo ennen maalausta.jpg'), label: 'Ennen' },
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Sininen talo maalauksen jalkeen.jpg'), label: 'Jälkeen' },
+        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/sininen talo maalauksen jalkeen.jpg'), label: 'Jälkeen' },
       ],
     },
     {
@@ -188,7 +188,7 @@ const Referenssit = () => {
       title: 'Seinän värinvaihto',
       category: 'maalaus',
       images: [
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen seina ennen varinvaihtoa.jpg'), label: 'Ennen' },
+        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen seina ennen maalausta varinvaihdos.jpg'), label: 'Ennen' },
         { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Harmaa seina varinvaihdon jalkeen.jpg'), label: 'Jälkeen' },
       ],
     },
@@ -234,7 +234,7 @@ const Referenssit = () => {
 
   return (
     <div>
-      <ServicePageHero title="Referenssit" subtitle="Tutustu tekemiimme töihin – laatu puhuu puolestaan" />
+      <ServicePageHero title="Referenssit" subtitle="Tutustu tekemiimme töihin – laatu puhuu puolestaan" backgroundImage={getStorageUrl('Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.jpg')} />
 
       <section className="section-padding bg-background">
         <div className="section-container">
