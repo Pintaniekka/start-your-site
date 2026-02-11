@@ -3,7 +3,8 @@ import { Check, Droplets, Shield, Sparkles, Clock } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
-import puhdistusImage from "@/assets/puhdistus_ennen_jalkeen.png";
+import { getStorageUrl } from "@/lib/storage";
+const puhdistusImage = getStorageUrl("Paallekkain_synkronoidut_kuvat/Punainen maalattu katto ennen ja jalkeen.jpg");
 
 const KattopalvelutPuhdistus = () => {
   const features = [
