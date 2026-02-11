@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
-import { Paintbrush, Home, ArrowRight, Check, Droplets } from "lucide-react";
+import { ArrowRight, Check, Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getStorageUrl } from "@/lib/storage";
+import BeforeAfterSlider from "./BeforeAfterSlider";
 
 const services = [{
-  icon: Paintbrush,
   title: "Tiilikaton pinnoitus",
+  beforeImage: getStorageUrl("Palvelukortit/Punainen_katto_ennen.jpg"),
+  afterImage: getStorageUrl("Palvelukortit/Punainen_katto_jalkeen.jpg"),
   description: "Vanha tiilikatto uuteen loistoon. Puhdistamme sammaleen, suojaamme tiilen ja maalaamme pinnan kestäväksi.",
   features: ["Sammaleenpuhdistus", "Suojakäsittely", "Pinnoitus"],
   warranty: "5v takuu",
-  image: "/katto_1.png"
 }, {
-  icon: Home,
   title: "Ulkomaalaus",
+  beforeImage: getStorageUrl("Palvelukortit/Keltainen_seina_ennen.jpg"),
+  afterImage: getStorageUrl("Palvelukortit/Keltainen_seina_jalkeen.jpg"),
   description: "Huolelliset pohjatyöt ja laadukas maalipinta suojaavat taloasi vuosiksi eteenpäin.",
   features: ["Pohjatyöt", "Laadukkaat maalit", "Siisti työnjälki"],
   warranty: "2v takuu",
-  image: "/seina.png"
 }];
 
 const Services = () => {
@@ -48,9 +50,12 @@ const Services = () => {
         }} transition={{
           delay: index * 0.15
         }} className="card-elevated group">
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-7 h-7 text-primary" />
+              {/* Before/After Slider */}
+              <div className="mb-6">
+                <BeforeAfterSlider
+                  beforeImage={service.beforeImage}
+                  afterImage={service.afterImage}
+                />
               </div>
 
               {/* Content */}
