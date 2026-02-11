@@ -1,32 +1,111 @@
 
 
-# Favicon-korjaus: SVG paafaviconiksi, vanhat PNG:t pois
+# Palvelumme-osion uudistus: Ennen/Jalkeen-liukusaatimet palvelukortteihin
 
-## Ongelma
+## Yhteenveto
 
-Nykyiset PNG-faviconit (`favicon.png`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`) ovat pikseloituneita placeholder-kuvia. Ne nayttavat huonoilta selainvalilahdissa.
+Korvataan nykyisten palvelukorttien ikonikuvat kompakteilla ennen/jalkeen-liukusaatimilla. Jokainen kortti saa oman interaktiivisen kuvavertailun "tuotekuvaksi". Samalla poistetaan erillinen BeforeAfter-osio etusivulta, koska sen toiminnallisuus siirtyy suoraan palvelukortteihin.
 
-## Ratkaisu
+## Muutokset
 
-1. **Kopioidaan ladattu SVG** (`user-uploads://Pintanen_favicon_maalaus.svg`) tiedostoon `public/favicon.svg`
+### 1. Uusi komponentti: `BeforeAfterSlider`
 
-2. **Paivitetaan `index.html`** - SVG ensisijaiseksi faviconiksi, poistetaan turhat PNG-viittaukset:
+Luodaan uudelleenkaytettava `src/components/BeforeAfterSlider.tsx`, joka kapseloi liukusaatimen logiikan (sama tekniikka kuin nykyisessa `BeforeAfter.tsx`). Props:
+- `beforeImage: string` -- ennen-kuvan URL
+- `afterImage: string` -- jalkeen-kuvan URL
+- `aspectRatio?: string` -- oletuksena `"4/3"`
 
-```text
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-```
+Komponentti on kompakti: pyoristetyt kulmat (`rounded-xl`), "Ennen"/"Jalkeen"-labelit, vetokahva. Ei omaa otsikkoa tai taustaosioita -- pelkka kuvavertailu.
 
-Poistetaan rivit jotka viittaavat vanhoihin pikseloituneisiin PNG-tiedostoihin (favicon.png 16x16 ja 32x32, icon-192.png, icon-512.png). Apple Touch Icon -rivi sailytetaan rakenteellisesti, mutta koska sekin on vanha placeholder, sen voisi paivittaa myohemmin kun kaytossa on nelion muotoinen PNG.
+### 2. Kuvien lataus Supabase Storageen
+
+Ladataan kayttajan antamat 4 kuvaa Supabase Storagen `images`-ampariin ja kaytetaan `getStorageUrl()`-funktiota URL:ien luontiin. Kuvien polut:
+
+- `Palvelukortit/Punainen_katto_ennen.jpg`
+- `Palvelukortit/Punainen_katto_jalkeen.jpg`
+- `Palvelukortit/Keltainen_seina_ennen.jpg`
+- `Palvelukortit/Keltainen_seina_jalkeen.jpg`
+
+### 3. Paivitetaan `Services.tsx`
+
+- Poistetaan ikoni-elementti korttien ylaosasta
+- Lisataan `BeforeAfterSlider` korttien ylaosaan ennen otsikkoa
+- Palveludata saa uudet kentat `beforeImage` ja `afterImage` ikonin tilalle
+- Kortin rakenne: Slider -> Otsikko -> Kuvaus -> Ominaisuuslista -> Takuu + "Laske hinta"
+
+### 4. Poistetaan `BeforeAfter`-osio etusivulta
+
+Koska ennen/jalkeen-vertailu siirtyy palvelukortteihin, erillinen `BeforeAfter`-komponentti poistetaan `Index.tsx`:sta. Itse `BeforeAfter.tsx`-tiedosto sailytetaan mahdollista myohempaa kayttoa varten.
 
 ## Muutettavat tiedostot
 
 | Tiedosto | Muutos |
 |---|---|
-| `public/favicon.svg` | Uusi tiedosto (kopio ladatusta SVG:sta) |
-| `index.html` | SVG-favicon ensisijaiseksi, vanhat PNG-rivit pois |
+| `src/components/BeforeAfterSlider.tsx` | Uusi komponentti -- kompakti ennen/jalkeen-liukusaadin |
+| `src/components/Services.tsx` | Korvataan ikonit liukusaatimilla, paivitetaan palveludata |
+| `src/pages/Index.tsx` | Poistetaan `BeforeAfter`-osion kayto |
 
-## Huomio
+## Tekninen toteutus
 
-SVG-favicon toimii Chromessa, Firefoxissa ja Edgessa. Safari ei tue SVG-faviconia, joten siella nakyy oletuskuvake. Jos myohemmin haluat taydellisen tuen kaikille selaimille, tarvitaan nelion muotoinen PNG-versio samasta kuvasta.
+### BeforeAfterSlider-komponentti
+
+```text
+Props:
+  beforeImage: string
+  afterImage: string
+  aspectRatio?: string (default "4/3")
+
+Rakenne:
+  <div className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-ew-resize">
+    <img after (taustalla) />
+    <div clipPath before (leikattu) />
+    <div slider-kahva />
+    <span "Ennen" label />
+    <span "Jalkeen" label />
+  </div>
+```
+
+Pienempi kahva (w-10 h-10) ja pienennot labelit kortin mittakaavaan sopiviksi.
+
+### Services.tsx palveludata
+
+```text
+services = [
+  {
+    title: "Tiilikaton pinnoitus",
+    beforeImage: getStorageUrl("Palvelukortit/Punainen_katto_ennen.jpg"),
+    afterImage: getStorageUrl("Palvelukortit/Punainen_katto_jalkeen.jpg"),
+    description: "Vanha tiilikatto uuteen loistoon...",
+    features: ["Sammaleenpuhdistus", "Suojakasittely", "Pinnoitus"],
+    warranty: "5v takuu"
+  },
+  {
+    title: "Ulkomaalaus",
+    beforeImage: getStorageUrl("Palvelukortit/Keltainen_seina_ennen.jpg"),
+    afterImage: getStorageUrl("Palvelukortit/Keltainen_seina_jalkeen.jpg"),
+    description: "Huolelliset pohjatyot ja laadukas maalipinta...",
+    features: ["Pohjatyot", "Laadukkaat maalit", "Siisti tyonjälki"],
+    warranty: "2v takuu"
+  }
+]
+```
+
+### Kortin ulkoasu
+
+```text
++-------------------------------+
+|  [  Ennen / Jalkeen slider  ] |  <-- rounded-xl, aspect-4/3
+|-------------------------------|
+|  Tiilikaton pinnoitus         |
+|  Vanha tiilikatto uuteen...   |
+|                               |
+|  v Sammaleenpuhdistus         |
+|  v Suojakasittely             |
+|  v Pinnoitus                  |
+|                               |
+|  [5v takuu]    Laske hinta -> |
++-------------------------------+
+```
+
+Katon puhdistus -banneri ja tyovaiheet-osio sailyvat ennallaan korttien alapuolella.
 
