@@ -1,59 +1,65 @@
 import { motion } from "framer-motion";
-import kattoHarmaa from "@/assets/katto_harmaa.png";
-import kattoRuskea from "@/assets/katto_ruskea.png";
-import kattoPuolet from "@/assets/katto_puolet.png";
-import katto1 from "@/assets/katto_1.png";
-import kattoJalkeen from "@/assets/katto_jalkeen.png";
-const images = [{
-  src: katto1,
-  alt: "Valmis punainen tiilikatto",
-  category: "Tiilikaton pinnoitus"
-}, {
-  src: kattoHarmaa,
-  alt: "Harmaa tiilikatto",
-  category: "Tiilikaton pinnoitus"
-}, {
-  src: kattoRuskea,
-  alt: "Ruskea tiilikatto",
-  category: "Tiilikaton pinnoitus"
-}, {
-  src: kattoPuolet,
-  alt: "Katon pesu",
-  category: "Tiilikaton pinnoitus"
-}, {
-  src: kattoJalkeen,
-  alt: "Punainen katto valmiina",
-  category: "Tiilikaton pinnoitus"
-}];
+import { getStorageUrl } from "@/lib/storage";
+
+const images = [
+  {
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis tiilen punainen.jpg"),
+    alt: "Valmis punainen tiilikatto",
+    category: "Tiilikaton pinnoitus",
+  },
+  {
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis harmaa.jpg"),
+    alt: "Harmaa tiilikatto",
+    category: "Tiilikaton pinnoitus",
+  },
+  {
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis ruskea.jpg"),
+    alt: "Ruskea tiilikatto",
+    category: "Tiilikaton pinnoitus",
+  },
+  {
+    src: getStorageUrl("Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.jpg"),
+    alt: "Katon pesu käynnissä",
+    category: "Tiilikaton pinnoitus",
+  },
+  {
+    src: getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.jpg"),
+    alt: "Kiiltava valmis katto",
+    category: "Tiilikaton pinnoitus",
+  },
+];
+
 const Gallery = () => {
-  return <section id="referenssit" className="section-padding bg-muted">
+  return (
+    <section id="referenssit" className="section-padding bg-muted">
       <div className="section-container">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} className="text-center max-w-2xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Esimerkkikohteita</h2>
-          <p className="text-muted-foreground text-lg">Tutustu tekemiimme töihin. Jokainen työ on tehty ammattitaidolla alusta loppuun.</p>
+          <p className="text-muted-foreground text-lg">
+            Tutustu tekemiimme töihin. Jokainen työ on tehty ammattitaidolla alusta loppuun.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {images.map((image, index) => <motion.div key={index} initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          delay: index * 0.1
-        }} className="group relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+          {images.map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <span className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium mb-2">
@@ -61,9 +67,12 @@ const Gallery = () => {
                 </span>
                 <p className="text-primary-foreground text-sm">{image.alt}</p>
               </div>
-            </motion.div>)}
+            </motion.div>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Gallery;

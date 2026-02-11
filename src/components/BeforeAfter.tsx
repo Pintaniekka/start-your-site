@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import kattoEnnen from "@/assets/katto_ennen.png";
-import kattoJalkeen from "@/assets/katto_jalkeen.png";
+import { getStorageUrl } from "@/lib/storage";
+
+const kattoEnnen = getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kulunut katto ennen maalauspinnoitusta.jpg");
+const kattoJalkeen = getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen katto maalauspinnoituksen jalkeen.jpg");
 
 const BeforeAfter = () => {
   const [sliderPosition, setSliderPosition] = useState(50);
