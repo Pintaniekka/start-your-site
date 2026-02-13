@@ -6,15 +6,15 @@ import BeforeAfterSlider from "./BeforeAfterSlider";
 
 const services = [{
   title: "Tiilikaton pinnoitus",
-  beforeImage: getStorageUrl("Palvelukortit/Punainen_katto_ennen.jpg"),
-  afterImage: getStorageUrl("Palvelukortit/Punainen_katto_jalkeen.jpg"),
+  beforeImage: getStorageUrl("Palvelukortit/Punainen_katto_ennen.webp"),
+  afterImage: getStorageUrl("Palvelukortit/Punainen_katto_jalkeen.webp"),
   description: "Vanha tiilikatto uuteen loistoon. Puhdistamme sammaleen, suojaamme tiilen ja maalaamme pinnan kestäväksi.",
   features: ["Sammaleenpuhdistus", "Suojakäsittely", "Pinnoitus"],
   warranty: "5v takuu",
 }, {
   title: "Ulkomaalaus",
-  beforeImage: getStorageUrl("Palvelukortit/Keltainen_seina_ennen.jpg"),
-  afterImage: getStorageUrl("Palvelukortit/Keltainen_seina_jalkeen.jpg"),
+  beforeImage: getStorageUrl("Palvelukortit/Keltainen_seina_ennen.webp"),
+  afterImage: getStorageUrl("Palvelukortit/Keltainen_seina_jalkeen.webp"),
   description: "Huolelliset pohjatyöt ja laadukas maalipinta suojaavat taloasi vuosiksi eteenpäin.",
   features: ["Pohjatyöt", "Laadukkaat maalit", "Siisti työnjälki"],
   warranty: "2v takuu",

@@ -6,7 +6,7 @@ import BeforeAfter from "@/components/BeforeAfter";
 import PriceCalculator from "@/components/PriceCalculator";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
 import { getStorageUrl } from "@/lib/storage";
-const kattoImage = getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.jpg");
+const kattoImage = getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.webp");
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
     icon: Droplets,
