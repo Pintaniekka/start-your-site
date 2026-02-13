@@ -4,7 +4,7 @@ import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
 import { getStorageUrl } from "@/lib/storage";
-const puhdistusImage = getStorageUrl("Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.jpg");
+const puhdistusImage = getStorageUrl("Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.webp");
 
 const KattopalvelutPuhdistus = () => {
   const features = [

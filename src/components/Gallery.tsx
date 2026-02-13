@@ -3,27 +3,27 @@ import { getStorageUrl } from "@/lib/storage";
 
 const images = [
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis tiilen punainen.jpg"),
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis tiilen punainen.webp"),
     alt: "Valmis punainen tiilikatto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis harmaa.jpg"),
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis harmaa.webp"),
     alt: "Harmaa tiilikatto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis ruskea.jpg"),
+    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis ruskea.webp"),
     alt: "Ruskea tiilikatto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.jpg"),
+    src: getStorageUrl("Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.webp"),
     alt: "Katon pesu käynnissä",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.jpg"),
+    src: getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.webp"),
     alt: "Kiiltava valmis katto",
     category: "Tiilikaton pinnoitus",
   },
