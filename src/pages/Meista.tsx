@@ -3,7 +3,7 @@ import { Check, MapPin, Award, Users, Target } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import { getStorageUrl } from "@/lib/storage";
-const pensselikuva = getStorageUrl("pensselikuva.webp");
+const pensselikuva = getStorageUrl("Muut_referenssit/pensselikuva.webp");
 
 const Meista = () => {
   const values = [

@@ -3,8 +3,9 @@ import { Check, Paintbrush, Shield, Clock, BadgeCheck, Home, Sun } from "lucide-
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getStorageUrl } from "@/lib/storage";
-const heroImage = getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Harmaa seina varinvaihdon jalkeen.webp");
+const heroImage = getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/sininen talo maalauksen jalkeen.webp");
 
 const TalonMaalaus = () => {
   const processSteps = [
@@ -177,6 +178,27 @@ const TalonMaalaus = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Before/After Slider */}
+      <section className="section-padding bg-muted">
+        <div className="section-container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto mb-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Ennen & Jälkeen</h2>
+            <p className="text-muted-foreground text-lg">Vedä liukusäädintä ja näe ero.</p>
+          </motion.div>
+          <div className="max-w-2xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage={getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Keltainen talo ennen varin vahtoa.webp")}
+              afterImage={getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Violetti talo varin vaihdon jalkeen.webp")}
+            />
           </div>
         </div>
       </section>

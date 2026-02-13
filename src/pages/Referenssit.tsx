@@ -152,7 +152,7 @@ const Referenssit = () => {
       title: 'Tiilikattoprojekti 2',
       category: 'pinnoitus',
       images: [
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen likainen katto ennen maalauspinnoitusta.webp'), label: 'Ennen' },
+        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen liakainen katto ennen maalauspinnoitusta.webp'), label: 'Ennen' },
         { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kiiltava katto maalaukspinnoituksen jalkeen.webp'), label: 'Pinnoitettuna' },
       ],
     },
@@ -161,8 +161,8 @@ const Referenssit = () => {
       title: 'Tiilikaton puhdistus',
       category: 'puhdistus',
       images: [
-        { src: getStorageUrl('Muut_referenssit/Katto ennen mekaanista puhdistusta.webp'), label: 'Ennen puhdistusta' },
-        { src: getStorageUrl('Muut_referenssit/Katto mekaanisen puhdistuksen jalkeen.webp'), label: 'Puhdistuksen jälkeen' },
+        { src: getStorageUrl('Muut_referenssit/Ennen puhdistusta.webp'), label: 'Ennen puhdistusta' },
+        { src: getStorageUrl('Muut_referenssit/Puhdistuksen jalkeen.webp'), label: 'Puhdistuksen jälkeen' },
       ],
     },
     {
@@ -188,15 +188,15 @@ const Referenssit = () => {
       title: 'Seinän värinvaihto',
       category: 'maalaus',
       images: [
-        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen seina ennen maalausta varinvaihdos.webp'), label: 'Ennen' },
+        { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen seina ennen maalausta (varinvaihdos).webp'), label: 'Ennen' },
         { src: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Harmaa seina varinvaihdon jalkeen.webp'), label: 'Jälkeen' },
       ],
     },
-    { type: 'single', image: getStorageUrl('Muut_referenssit/Maalattu katto valmis tiilen punainen.webp'), category: 'pinnoitus', title: 'Valmis pinnoitus' },
-    { type: 'single', image: getStorageUrl('Muut_referenssit/Maalattu katto valmis harmaa.webp'), category: 'pinnoitus', title: 'Harmaa pinnoitus' },
-    { type: 'single', image: getStorageUrl('Muut_referenssit/Maalattu katto valmis ruskea.webp'), category: 'pinnoitus', title: 'Ruskea pinnoitus' },
-    { type: 'single', image: getStorageUrl('Muut_referenssit/katto vanha ja uusi vierekkain.webp'), category: 'pinnoitus', title: 'Ennen ja jälkeen' },
-    { type: 'single', image: getStorageUrl('Muut_referenssit/Valmis seina maalattu.webp'), category: 'maalaus', title: 'Valmis seinämaalaus' },
+    { type: 'single', image: getStorageUrl('Muut_referenssit/katto valmist tiilen punainen.webp'), category: 'pinnoitus', title: 'Valmis pinnoitus' },
+    { type: 'single', image: getStorageUrl('Muut_referenssit/katto valmis harmaa.webp'), category: 'pinnoitus', title: 'Harmaa pinnoitus' },
+    { type: 'single', image: getStorageUrl('Muut_referenssit/katto valmis ruskea.webp'), category: 'pinnoitus', title: 'Ruskea pinnoitus' },
+    { type: 'single', image: getStorageUrl('Muut_referenssit/katto vanha vs uus.webp'), category: 'pinnoitus', title: 'Ennen ja jälkeen' },
+    { type: 'single', image: getStorageUrl('Samaan_kohtaan_synkronoidut_kuvat_erikseen/Vihrea seina maalauksen jalkeen.webp'), category: 'maalaus', title: 'Valmis seinämaalaus' },
     { type: 'single', image: getStorageUrl('Muut_referenssit/suojaus 1.webp'), category: 'maalaus', title: 'Suojaus' },
     { type: 'single', image: getStorageUrl('Muut_referenssit/suojaus 2.webp'), category: 'maalaus', title: 'Suojaus' },
   ];
@@ -234,7 +234,7 @@ const Referenssit = () => {
 
   return (
     <div>
-      <ServicePageHero title="Referenssit" subtitle="Tutustu tekemiimme töihin – laatu puhuu puolestaan" backgroundImage={getStorageUrl('Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.webp')} />
+      <ServicePageHero title="Referenssit" subtitle="Tutustu tekemiimme töihin – laatu puhuu puolestaan" backgroundImage={getStorageUrl('Muut_referenssit/katto puolet pesty.webp')} />
 
       <section className="section-padding bg-background">
         <div className="section-container">

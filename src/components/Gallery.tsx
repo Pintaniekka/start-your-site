@@ -3,29 +3,34 @@ import { getStorageUrl } from "@/lib/storage";
 
 const images = [
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis tiilen punainen.webp"),
+    src: getStorageUrl("Muut_referenssit/katto valmist tiilen punainen.webp"),
     alt: "Valmis punainen tiilikatto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis harmaa.webp"),
+    src: getStorageUrl("Muut_referenssit/katto valmis harmaa.webp"),
     alt: "Harmaa tiilikatto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Maalattu katto valmis ruskea.webp"),
-    alt: "Ruskea tiilikatto",
+    src: getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kiiltava katto maalaukspinnoituksen jalkeen.webp"),
+    alt: "Kiiltava punainen katto",
     category: "Tiilikaton pinnoitus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/kattoprojekti, jossa puolet katosta pesty.webp"),
-    alt: "Katon pesu käynnissä",
-    category: "Tiilikaton pinnoitus",
+    src: getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Laivaston sininen talo maalauksen jalkeen.webp"),
+    alt: "Laivastonsininen talo",
+    category: "Talon maalaus",
   },
   {
-    src: getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.webp"),
-    alt: "Kiiltava valmis katto",
-    category: "Tiilikaton pinnoitus",
+    src: getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Violetti talo varin vaihdon jalkeen.webp"),
+    alt: "Violetti talo värinvaihdon jälkeen",
+    category: "Talon maalaus",
+  },
+  {
+    src: getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Harmaa seina varinvaihdon jalkeen.webp"),
+    alt: "Harmaa seinä värinvaihdon jälkeen",
+    category: "Talon maalaus",
   },
 ];
 

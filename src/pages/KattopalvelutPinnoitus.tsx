@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { Check, Droplets, Paintbrush, Shield, Clock, BadgeCheck } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
-import BeforeAfter from "@/components/BeforeAfter";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import PriceCalculator from "@/components/PriceCalculator";
 import KotitalousVahennys from "@/components/KotitalousVahennys";
 import { getStorageUrl } from "@/lib/storage";
-const kattoImage = getStorageUrl("Muut_referenssit/Kiiltava valmis maalattu katto.webp");
+const kattoImage = getStorageUrl("Muut_referenssit/Kiiltava maalattu katto.webp");
 const KattopalvelutPinnoitus = () => {
   const processSteps = [{
     icon: Droplets,
@@ -155,10 +155,23 @@ const KattopalvelutPinnoitus = () => {
       </section>
 
       {/* Before/After */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted">
         <div className="section-container">
-          
-          <BeforeAfter />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-2xl mx-auto mb-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-heading">Ennen & Jälkeen</h2>
+            <p className="text-muted-foreground text-lg">Vedä liukusäädintä ja näe ero.</p>
+          </motion.div>
+          <div className="max-w-2xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage={getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen kulunut katto ennen maalauspinnoitusta.webp")}
+              afterImage={getStorageUrl("Samaan_kohtaan_synkronoidut_kuvat_erikseen/Punainen katto maalauspinnoituksen jalkeen.webp")}
+            />
+          </div>
         </div>
       </section>
 
