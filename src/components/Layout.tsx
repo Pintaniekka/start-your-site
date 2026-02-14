@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import MobileBottomBar from './MobileBottomBar';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <MobileBottomBar />
     </div>
   );
 };
