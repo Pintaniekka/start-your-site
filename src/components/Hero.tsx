@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Clock, Award, MapPin } from "lucide-react";
-import heroVideo from "@/assets/Taustavideo.mp4";
+const heroVideoUrl = `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/images/Nettisivun taustavideo maalaus.mp4`;
 
 const Hero = () => {
   return (
@@ -8,7 +8,7 @@ const Hero = () => {
       {/* Background Video with Overlay */}
       <div className="absolute inset-0">
         <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-          <source src={heroVideo} type="video/mp4" />
+          <source src={heroVideoUrl} type="video/mp4" />
         </video>
         <div className="absolute inset-0" style={{ background: "var(--hero-gradient)" }} />
       </div>
