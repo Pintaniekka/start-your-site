@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Check, MapPin, Award, Users, Target } from "lucide-react";
 import ServicePageHero from "@/components/ServicePageHero";
 import ServiceCTA from "@/components/ServiceCTA";
@@ -254,9 +255,9 @@ const Meista = () => {
             <p className="text-lg text-muted-foreground mb-6">Palvelemme koko Pirkanmaan alueella ja lähikunnissa:</p>
             <div className="flex flex-wrap justify-center gap-2">
               {["Tampere", "Nokia", "Hämeenkyrö", "Sastamala", "Kangasala", "Forssa"].map((city) => (
-                <span key={city} className="px-4 py-2 bg-card rounded-full text-foreground font-medium">
+                <Link key={city} to="/kattopalvelut/pinnoitus" className="px-4 py-2 bg-card rounded-full text-foreground font-medium hover:bg-primary hover:text-primary-foreground transition-colors">
                   {city}
-                </span>
+                </Link>
               ))}
             </div>
           </motion.div>

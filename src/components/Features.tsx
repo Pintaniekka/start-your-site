@@ -22,10 +22,10 @@ const Features = () => {
             Tampere, Sastamala, Hämeenkyrö, Ylöjärvi, Nokia sekä Forssa
           </div>
           <Link 
-            to="/toiminta-alueet" 
+            to="/kattopalvelut/pinnoitus" 
             className="text-accent hover:text-accent/80 text-sm font-medium underline underline-offset-2 transition-colors"
           >
-            Kaikki alueet →
+            Tiilikaton pinnoitus →
           </Link>
         </motion.div>
       </div>

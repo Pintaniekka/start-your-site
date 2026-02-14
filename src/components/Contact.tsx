@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Check, Loader2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 
@@ -77,8 +78,8 @@ const Contact = () => {
                 Pintanen Oy
               </h3>
               <p className="text-primary-foreground/70 mb-8">
-                Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla. 
-                Toiminta-alue: Pirkanmaa ja ympäröivät kunnat.
+                <Link to="/kattopalvelut/pinnoitus" className="underline underline-offset-2 hover:text-primary-foreground transition-colors">Tiilikattojen pinnoitukset</Link> ja ulkomaalaukset ammattitaidolla. 
+                Toiminta-alue: <Link to="/kattopalvelut/pinnoitus" className="underline underline-offset-2 hover:text-primary-foreground transition-colors">Pirkanmaa</Link> ja ympäröivät kunnat.
               </p>
             </div>
 
@@ -103,15 +104,15 @@ const Contact = () => {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-5 rounded-xl bg-white/10 border border-white/10">
-                <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center">
+              <Link to="/kattopalvelut/pinnoitus" className="flex items-center gap-4 p-5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors group border border-white/10">
+                <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <MapPin className="w-6 h-6 text-accent" />
                 </div>
                 <div>
                   <div className="text-sm text-primary-foreground/60">Toiminta-alue</div>
                   <div className="font-bold text-primary-foreground text-lg">Pirkanmaa ja ympäristö</div>
                 </div>
-              </div>
+              </Link>
             </div>
           </motion.div>
 

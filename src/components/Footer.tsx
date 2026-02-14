@@ -9,8 +9,8 @@ const Footer = () => {
           <div>
             <img src={logo} alt="Pintanen Oy" className="h-16 w-auto mb-4 brightness-0 invert" />
             <p className="text-primary-foreground/70 text-sm">
-              Tiilikattojen pinnoitukset ja ulkomaalaukset ammattitaidolla. 
-              Toiminta-alue: Pirkanmaa ja lähialueet (Forssa)
+              <Link to="/kattopalvelut/pinnoitus" className="hover:text-primary-foreground transition-colors underline underline-offset-2">Tiilikattojen pinnoitukset</Link> ja ulkomaalaukset ammattitaidolla. 
+              Toiminta-alue: <Link to="/kattopalvelut/pinnoitus" className="hover:text-primary-foreground transition-colors underline underline-offset-2">Pirkanmaa</Link> ja lähialueet (Forssa)
             </p>
           </div>
 
