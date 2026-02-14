@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ServicePageHero from '@/components/ServicePageHero';
 import ServiceCTA from '@/components/ServiceCTA';
 import kattoImage from '@/assets/katto_1.png';
@@ -73,9 +74,13 @@ const ToimintaAlueet = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.02 }}
-                  className="bg-secondary text-secondary-foreground px-4 py-3 rounded-lg text-center font-medium"
                 >
-                  {kunta}
+                  <Link
+                    to="/kattopalvelut/pinnoitus"
+                    className="block bg-secondary text-secondary-foreground px-4 py-3 rounded-lg text-center font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    {kunta}
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -101,9 +106,13 @@ const ToimintaAlueet = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.02 }}
-                  className="bg-secondary text-secondary-foreground px-4 py-3 rounded-lg text-center font-medium"
                 >
-                  {alue}
+                  <Link
+                    to="/kattopalvelut/pinnoitus"
+                    className="block bg-secondary text-secondary-foreground px-4 py-3 rounded-lg text-center font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+                  >
+                    {alue}
+                  </Link>
                 </motion.div>
               ))}
             </div>
